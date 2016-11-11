@@ -1,0 +1,33 @@
+<div class="col-lg-8 col-md-offset-2" id="content">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <span class="title">{{ActionTitle}}</span>
+        </div>
+        <div class="panel-body">
+            <form class="form-horizontal" role="form" [formGroup]="ForgotPass"  
+                (ngSubmit)="onSubmit(ForgotPass.value)" novalidate >
+                <div class="form-group">
+                    <div class="col-md-12"
+                        [ngClass]="{'has-error':formErrors.email, 
+                        'has-success':ForgotPass.controls['email'].valid}">
+                        <input id="email" type="email" class="form-control" 
+                        formControlName="email" name="email" autofocus 
+                        placeholder="Email Address">
+                        <span *ngIf="formErrors.email" class="help-block error">
+                            {{ formErrors.email }}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-6 col-md-offset-3">
+                        <button type="submit" class="btn btn-primary">
+                            Send password reset link!
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+    

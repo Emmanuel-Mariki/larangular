@@ -1,0 +1,43 @@
+/*input[type=text],input[type=number],textarea,select{
+    border-width: 2px;
+    border-color: rgb(247,209,60);
+    F66807
+
+}
+*/
+input[type=text].ng-valid,
+select.ng-valid,
+input[type=number].ng-valid,
+textarea.ng-valid{
+    border-width: 2px;
+    background-color: #FAFFBD;
+}
+
+input[type=text],input[type=number],select{
+    height: 50px;
+    font-size: 180%;
+}
+textarea{
+    height: 150px;
+    font-size: 180%;
+}
+.panel-default>.panel-heading {
+    color: #663663;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 250%;
+}
+
+label
+{
+    color: #898;
+    font-size: 180%
+}
+.error
+{
+    color: #a94442;
+    font-size: 150%;
+}
+input[type=submit]{
+    color: #fff;
+}
+.has-error{    border-color: #a94442;}

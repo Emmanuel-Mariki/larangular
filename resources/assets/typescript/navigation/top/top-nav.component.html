@@ -1,0 +1,59 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+
+            <!-- Collapsed Hamburger -->
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
+                <span class="sr-only">Toggle Navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Branding Image -->
+            <a class="navbar-brand" routerLink="/larangular" (click)="ShowLeftMenu()">
+                <img src="http://localhost/larangular/public/img/logo/logo.png"/>
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="app-navbar-collapse" *ngIf="TopNavs">
+            <!-- Left Side Of Navbar -->
+            <ul class="nav navbar-nav" id="nav-left">    
+                <li *ngFor="let TopNav of TopNavs">
+                    <a  routerLink="/larangular/{{TopNav.url}}" 
+                        role="button" aria-expanded="false"
+                        (click)="ShowLeftMenu()">
+                        {{TopNav.name}}
+                    </a>
+                </li>
+
+            </ul>
+
+            <!-- Right Side Of Navbar -->
+            <ul class="nav navbar-nav navbar-right" id="nav-right">
+                <!-- Authentication Links -->
+               <!--<li>
+                    <a routerLink="/larangular/dashboard/property-types">Types</a>
+                </li>
+                <li>
+                    <a routerLink="/larangular/dashboard/property-categories">Categories</a>
+                </li>
+                <li>
+                    <a routerLink="/larangular/dashboard/countries">Countries</a>
+                </li>
+                  <li>
+                    <a routerLink="/larangular/dashboard/cities">Cities</a>
+                </li>
+                <li>
+                    <a routerLink="/larangular/dashboard/districts">Districts</a>
+                </li>-->
+                <li>
+                    <a routerLink="/larangular/login" (click)="HideLeftMenu();">Login</a>
+                </li>
+                <li><a routerLink="/larangular/join" (click)="HideLeftMenu();">Register</a></li>
+                
+
+            </ul>
+        </div>
+    </div>
+</nav>

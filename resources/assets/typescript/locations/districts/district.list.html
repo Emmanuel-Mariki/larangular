@@ -1,0 +1,78 @@
+<div class="col-lg-9" id="content">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-md-4">
+                    <a [routerLink]="['./new']" class="btn btn-success">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                    </a>
+                    <span class="title">{{ActionTitle}}</span>
+                </div>
+                <div class="col-md-8">
+                    <form [formGroup]="DistrictFormFilter">
+                        <input type="text" class="form-control" 
+                            id="search" 
+                            placeholder="Filter results...." 
+                            autocomplete="off"
+                            formControlName="term"
+                            [(ngModel)]="term"
+                            id="term">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="alert alert-success" role="alert" *ngIf="successMessage">
+                {{successMessage}}
+            </div>
+            <div class="alert alert-warning" role="alert" *ngIf="errorMessage">
+                {{errorMessage}}
+            </div>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <th width="5%">ID</th>
+                    <th width="25%">NAME</th>
+                    <th width="25%">URL</th>
+                    <th width="10%">ORDER</th>
+                    <th width="10%">ACTIVE</th>
+                    <th width="25%">ACTION</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let District of Districts | LocationFilter:term">
+                        <td>{{District.id}}</td>
+                        <td>{{District.name}}</td>
+                        <td>{{District.url}}</td>
+                        <td>{{District.priority}}</td>
+                        <td>
+                            <i *ngIf="District.active == Active" 
+                                style="cursor:pointer"
+                                (click)="Deactivate(District.id)"
+                                class="fa fa-eye" aria-hidden="true">
+                            </i>
+                            <i *ngIf="District.active == !Active" 
+                                style="cursor:pointer"
+                                (click)="Activate(District.id)"
+                                class="fa fa-remove" aria-hidden="true">
+                            </i>
+                        </td>
+                        <td>
+                            <a [routerLink]="['./edit/',District.id]" 
+                                class="btn btn-success">
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </a>
+
+                            <a [routerLink]="['./',District.id]"
+                                class="btn btn-warning">
+                            <i class="fa fa-eye" aria-hidden="true"></i>
+                            </a>
+                            
+                            <button class="btn btn-danger">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

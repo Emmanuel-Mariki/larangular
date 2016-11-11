@@ -1,0 +1,40 @@
+<div class="col-lg-3" id="left-sidebar">
+
+    <ul class="left-links" role="menu" id="left-menu">
+        <li class="dropdown-header left-nav-header">
+               Manage Site 
+        </li>
+       <li class="dropdown-header left-nav-link">
+            <a routerLink="/larangular/dashboard">Dashboard</a>
+        </li>
+       <li class="dropdown-header left-nav-link">
+            <a routerLink="/larangular/dashboard/property-types">Types</a>
+        </li>
+        <li class="dropdown-header left-nav-link">
+            <a routerLink="/larangular/dashboard/property-categories">Categories</a>
+        </li>
+        <li class="dropdown-header left-nav-link">
+            <a routerLink="/larangular/dashboard/countries">Countries</a>
+        </li>
+        <li class="dropdown-header left-nav-link">
+            <a routerLink="/larangular/dashboard/cities">Cities</a>
+        </li>
+        <li class="dropdown-header left-nav-link">
+            <a routerLink="/larangular/dashboard/districts">Districts</a>
+        </li>
+    </ul>
+
+    <ul class="left-links" role="menu" id="left-menu" *ngFor="let TopNav of TopNavs">
+        <li class="dropdown-header left-nav-header">
+                {{TopNav.name}}
+        </li>
+        <li class="dropdown-header left-nav-link" *ngFor="let category of TopNav.categories">
+            <a routerLink="/larangular/{{TopNav.url}}/{{category.url}}" 
+                role="button" aria-expanded="false">
+                 <img src="http://localhost/larangular/public/icons/{{category.name}}.svg"
+                 width="80" height="80" alt="{{category.name}}"/>
+                 {{category.name}}
+            </a>
+        </li> 
+    </ul>
+</div> 

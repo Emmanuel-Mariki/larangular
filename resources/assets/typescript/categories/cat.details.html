@@ -1,0 +1,300 @@
+<div class="col-lg-9" id="content"> 
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <a [routerLink]="['../']" 
+                class="btn btn-success">
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+            <span class="title">
+                {{Category.name }} 
+            </span>
+        </div>
+        <div class="panel-body">
+        <div class="alert alert-success" role="alert" *ngIf="successMessage">
+            {{successMessage}}
+        </div>
+        <div class="alert alert-warning" role="alert" *ngIf="errorMessage">
+            {{errorMessage}}
+        </div>
+            <form [formGroup]="CatForm"  (ngSubmit)="onSubmit(CatForm.value)" novalidate >
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-3">Type:</div>
+                            <div class="col-md-8"  *ngIf="formFields.type_id =='type_id'">
+                                {{Category.type_id}} 
+                            </div>
+                            <div class="col-md-1">
+                                <i class="fa fa-pencil btn btn-success" 
+                                    (click)="setButtonClicked('','type_id')"
+                                    *ngIf="formFields.type_id =='type_id'"
+                                    aria-hidden="true">
+                                </i>
+                                <button type="submit" class="btn btn-success"
+                                    *ngIf="formFields.type_id ==''" 
+                                    (click)="setButtonClicked('type_id','type_id'); 
+                                    onSubmit({type_id:Category.type_id})">
+                                    <i class="fa fa-floppy-o" aria-hidden="true">
+                                    </i>
+                                </button>
+                            </div>
+                            <div class="form-group col-md-8"  *ngIf="formFields.type_id ==''"
+                                [ngClass]="{'has-error':formErrors.type_id, 
+                                'has-success':CatForm.controls['type_id'].valid}">
+                                <select name="type_id" class="form-control" formControlName="type_id"
+                                    [(ngModel)] ="Category.type_id" >
+                                    <option *ngFor="let Type of Types" value="{{Type.id}}">{{Type.name}}</option>
+                                </select>
+                                <span *ngIf="formErrors.type_id" class="help-block error">
+                                    {{ formErrors.type_id }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-3">URL:</div>
+                            <div class="col-md-8"  *ngIf="formFields.url =='url'">
+                                {{Category.url}} 
+                            </div>
+                            <div class="col-md-1">
+                                <i class="fa fa-pencil btn btn-success" 
+                                    (click)="setButtonClicked('','url')"
+                                    *ngIf="formFields.url =='url'"
+                                    aria-hidden="true">
+                                </i>
+                                <button type="submit" class="btn btn-success"
+                                    *ngIf="formFields.url ==''" 
+                                    (click)="setButtonClicked('url','url'); 
+                                    onSubmit({url:Category.url})">
+                                    <i class="fa fa-floppy-o" aria-hidden="true">
+                                    </i>
+                                </button>
+                            </div>
+                            <div class="form-group col-md-8 url-form" 
+                                *ngIf="formFields.url ==''"
+                                [ngClass]="{'has-error':formErrors.url, 
+                                'has-success':CatForm.controls['url'].valid}">
+                                <input type="text" formControlName="url" 
+                                [(ngModel)] ="Category.url"
+                                class="form-control" id="url"/>
+                                <span *ngIf="formErrors.url" class="help-block error">
+                                    {{ formErrors.url }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-3">Title:</div>
+                            <div class="col-md-8" *ngIf="formFields.title =='title'">
+                                {{Category.title}} 
+                            </div>
+                            <div class="col-md-1">
+                                <i class="fa fa-pencil btn btn-success" 
+                                    (click)="setButtonClicked('','title')"
+                                    *ngIf="formFields.title =='title'"
+                                    aria-hidden="true">
+                                </i>
+                                <button type="submit" class="btn btn-success"
+                                    *ngIf="formFields.title ==''"
+                                    (click)="setButtonClicked('title','title'); 
+                                    onSubmit({title:Category.title})">
+                                    <i class="fa fa-floppy-o" aria-hidden="true">
+                                    </i>
+                                </button>
+                            </div>
+                            <div class="form-group col-md-8"
+                                *ngIf="formFields.title ==''"
+                                [ngClass]="{'has-error':formErrors.title, 
+                                'has-success':CatForm.controls['title'].valid}">
+                                <input type="text" formControlName="title" value="Category.title"
+                                [(ngModel)] ="Category.title" 
+                                class="form-control" id="title"/>
+                                <span *ngIf="formErrors.title" class="help-block error">
+                                    {{ formErrors.title }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-3">Name:</div>
+                            <div class="col-md-8" *ngIf="formFields.name =='name'">
+                                {{Category.name}} 
+                            </div>
+                            <div class="col-md-1">
+                                <i class="fa fa-pencil btn btn-success" 
+                                    (click)="setButtonClicked('','name')"
+                                    *ngIf="formFields.name =='name'"
+                                    aria-hidden="true">
+                                </i>
+                                <button type="submit" class="btn btn-success"
+                                    *ngIf="formFields.name ==''"
+                                    (click)="setButtonClicked('name','name'); 
+                                    onSubmit({name:Category.name})">
+                                    <i class="fa fa-floppy-o" aria-hidden="true">
+                                    </i>
+                                </button>
+                            </div>
+                            <div class="form-group col-md-8" *ngIf="formFields.name ==''"
+                                [ngClass]="{'has-error':formErrors.name, 
+                                'has-success':CatForm.controls['name'].valid}">
+                                <input type="text" formControlName="name" 
+                                [(ngModel)] ="Category.name"
+                                class="form-control" id="name"/>
+                                <span *ngIf="formErrors.name" class="help-block error">
+                                    {{ formErrors.name }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-3">Active:</div>
+                            <div class="col-md-8" [hidden]="visible">
+                                <span *ngIf="Category.active == Active"> Yes</span>
+                                <span *ngIf="Category.active == !Active"> No</span>
+                            </div>
+                            <div class="col-md-1">
+                                <i *ngIf="Category.active == Active" 
+                                    style="cursor:pointer"
+                                    (click)="Deactivate(Category.id)"
+                                    class="fa fa-eye" aria-hidden="true">
+                                </i>
+                                <i *ngIf="Category.active == !Active" 
+                                    style="cursor:pointer"
+                                    (click)="Activate(Category.id)"
+                                    class="fa fa-remove" aria-hidden="true">
+                                </i>
+                            </div>
+                            <div class="form-group col-md-8" [hidden]="!visible"
+                                [ngClass]="{'has-error':formErrors.active, 
+                                'has-success':CatForm.controls['active'].valid}">
+                                <input type="number" formControlName="active" 
+                                [(ngModel)] ="Category.active"
+                                class="form-control disabled" id="active"/>
+                                <span *ngIf="formErrors.active" class="help-block error">
+                                    {{ formErrors.active }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-3">Priority:</div>
+                            <div class="col-md-8" *ngIf="formFields.priority == 'priority'">
+                                {{Category.priority}} 
+                            </div>
+                            <div class="col-md-1">
+                                <i class="fa fa-pencil btn btn-success" 
+                                    (click)="setButtonClicked('','priority')"
+                                    *ngIf="formFields.priority =='priority'"
+                                    aria-hidden="true">
+                                </i>
+                                <button type="submit" class="btn btn-success"
+                                    *ngIf="formFields.priority ==''"
+                                    (click)="setButtonClicked('priority','priority'); 
+                                    onSubmit({priority:Category.priority})">
+                                    <i class="fa fa-floppy-o" aria-hidden="true">
+                                    </i>
+                                </button>
+                            </div>
+                            <div class="form-group col-md-8" *ngIf="formFields.priority == ''"
+                                [ngClass]="{'has-error':formErrors.priority, 
+                                'has-success':CatForm.controls['priority'].valid}">
+                                <input type="number" formControlName="priority" 
+                                [(ngModel)] ="Category.priority"
+                                class="form-control" id="priority"/>
+                                <span *ngIf="formErrors.priority" class="help-block error">
+                                    {{ formErrors.priority }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-3">Created:</div>
+                            <div class="col-md-9">
+                                {{Category.created_at | date}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-3">Updated:</div>
+                            <div class="col-md-9">
+                                {{Category.updated_at | date}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-3">Keywords:</div>
+                            <div class="col-md-8" *ngIf="formFields.keywords == 'keywords'">
+                                {{Category.keywords}} 
+                            </div>
+                            <div class="col-md-1">
+                                <i class="fa fa-pencil btn btn-success" 
+                                    (click)="setButtonClicked('','keywords')"
+                                    *ngIf="formFields.keywords =='keywords'"
+                                    aria-hidden="true">
+                                </i>
+                                <button type="submit" class="btn btn-success"
+                                    *ngIf="formFields.keywords ==''"
+                                    (click)="setButtonClicked('keywords','keywords'); 
+                                    onSubmit({keywords:Category.keywords})">
+                                    <i class="fa fa-floppy-o" aria-hidden="true">
+                                    </i>
+                                </button>
+                            </div>
+                            <div class="form-group col-md-8" *ngIf="formFields.keywords == ''"
+                                [ngClass]="{'has-error':formErrors.keywords, 
+                                'has-success':CatForm.controls['keywords'].valid}">
+                                <input type="text" formControlName="keywords" 
+                                [(ngModel)] ="Category.keywords"
+                                class="form-control" id="keywords"/>
+                                <span *ngIf="formErrors.keywords" class="help-block error">
+                                    {{ formErrors.keywords }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-3" *ngIf="formFields.descriptions == 'descriptions'">
+                            Descriptions:</div>
+                            <div class="col-md-8" *ngIf="formFields.descriptions == 'descriptions'">
+                                {{Category.descriptions}}
+                            </div>
+                            <div class="col-md-1">
+                                <i class="fa fa-pencil btn btn-success" 
+                                    (click)="setButtonClicked('','descriptions')"
+                                    *ngIf="formFields.descriptions =='descriptions'"
+                                    aria-hidden="true">
+                                </i>
+                                <button type="submit" class="btn btn-success"
+                                    *ngIf="formFields.descriptions ==''"
+                                    (click)="setButtonClicked('descriptions','descriptions'); 
+                                    onSubmit({descriptions:Category.descriptions})">
+                                    <i class="fa fa-floppy-o" aria-hidden="true">
+                                    </i>
+                                </button>
+                            </div>
+                            <div class="form-group col-md-11"*ngIf="formFields.descriptions == ''"
+                            [ngClass]="{'has-error':formErrors.descriptions, 
+                            'has-success':CatForm.controls['descriptions'].valid}">
+                                <textarea class="form-control" id="descriptions" cols="10"
+                                formControlName="descriptions"
+                                [(ngModel)] ="Category.descriptions"></textarea>
+                                <span *ngIf="formErrors.descriptions" class="help-block error">
+                                    {{ formErrors.descriptions }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
