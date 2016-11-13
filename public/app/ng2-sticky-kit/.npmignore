@@ -1,0 +1,21 @@
+# Misc
+build.xml
+node_modules/*
+npm-debug.log
+test
+typings/*
+typings.json
+
+# JetBrains
+.idea
+.project
+.settings
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Mac
+.DS_Store
+
+demo/*

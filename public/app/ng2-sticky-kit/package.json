@@ -1,0 +1,122 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "ng2-sticky-kit",
+        "scope": null,
+        "escapedName": "ng2-sticky-kit",
+        "name": "ng2-sticky-kit",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/var/www/html/larangular"
+    ]
+  ],
+  "_from": "ng2-sticky-kit@latest",
+  "_id": "ng2-sticky-kit@1.1.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/ng2-sticky-kit",
+  "_nodeVersion": "6.9.1",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/ng2-sticky-kit-1.1.0.tgz_1477406296698_0.9819437093101442"
+  },
+  "_npmUser": {
+    "name": "makseo",
+    "email": "makseo@freenet.de"
+  },
+  "_npmVersion": "3.10.9",
+  "_phantomChildren": {
+    "when": "3.7.7"
+  },
+  "_requested": {
+    "raw": "ng2-sticky-kit",
+    "scope": null,
+    "escapedName": "ng2-sticky-kit",
+    "name": "ng2-sticky-kit",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/ng2-sticky-kit/-/ng2-sticky-kit-1.1.0.tgz",
+  "_shasum": "5ed4fcdbe2eaeb37ef6ff8975cd9b160449c8520",
+  "_shrinkwrap": null,
+  "_spec": "ng2-sticky-kit",
+  "_where": "/var/www/html/larangular",
+  "author": {
+    "name": "Maksym Bidiuk"
+  },
+  "bugs": {
+    "url": "https://github.com/makseo/ng2-sticky/issues"
+  },
+  "dependencies": {
+    "@angular/common": "^2.1.0",
+    "@angular/compiler": "^2.1.0",
+    "@angular/core": "^2.1.0",
+    "@angular/platform-browser": "^2.1.0",
+    "@angular/platform-browser-dynamic": "^2.1.0",
+    "core-js": "2.4.1",
+    "reflect-metadata": "0.1.8",
+    "rxjs": "5.0.0-beta.12",
+    "systemjs": "0.19.38",
+    "zone.js": "^0.6.21"
+  },
+  "description": "Angular2 component that allows to stick the elements such as header, menu, sidebar or any other block on the page.",
+  "devDependencies": {
+    "jasmine-core": "~2.4.1",
+    "karma": "~0.13.22",
+    "karma-chrome-launcher": "~1.0.1",
+    "karma-firefox-launcher": "~1.0.0",
+    "karma-jasmine": "~1.0.2",
+    "karma-phantomjs-launcher": "~1.0.0",
+    "karma-spec-reporter": "0.0.26",
+    "lite-server": "^2.2.2",
+    "phantomjs-polyfill": "0.0.2",
+    "phantomjs-prebuilt": "2.1.7",
+    "typescript": "^1.8.10",
+    "typings": "^1.3.2"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "5ed4fcdbe2eaeb37ef6ff8975cd9b160449c8520",
+    "tarball": "https://registry.npmjs.org/ng2-sticky-kit/-/ng2-sticky-kit-1.1.0.tgz"
+  },
+  "gitHead": "2e325a2823c9a46ac175bad1384eb4a894bd4fc5",
+  "homepage": "https://github.com/makseo/ng2-sticky",
+  "keywords": [
+    "angular",
+    "angular2",
+    "ng2",
+    "sticky",
+    "stick",
+    "stuck",
+    "fixed"
+  ],
+  "license": "MIT",
+  "main": "ng2-sticky-kit.js",
+  "maintainers": [
+    {
+      "name": "makseo",
+      "email": "makseo@freenet.de"
+    }
+  ],
+  "name": "ng2-sticky-kit",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/makseo/ng2-sticky.git"
+  },
+  "scripts": {
+    "build": "./node_modules/typescript/bin/tsc",
+    "lite-server": "./node_modules/lite-server/bin/lite-server",
+    "test": "npm run build && ./node_modules/karma/bin/karma start karma.conf.js",
+    "typings": "typings install"
+  },
+  "version": "1.1.0"
+}
