@@ -1,6 +1,5 @@
-System.register(['@angular/core', '@angular/router', "@angular/forms", './district', './district.service'], function(exports_1, context_1) {
+System.register(["@angular/core", "@angular/router", "@angular/forms", "./district", "./district.service"], function (exports_1, context_1) {
     "use strict";
-    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10,10 +9,10 @@ System.register(['@angular/core', '@angular/router', "@angular/forms", './distri
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, forms_1, district_1, district_service_1;
-    var DistrictDetailsComponent;
+    var __moduleName = context_1 && context_1.id;
+    var core_1, router_1, forms_1, district_1, district_service_1, DistrictDetailsComponent;
     return {
-        setters:[
+        setters: [
             function (core_1_1) {
                 core_1 = core_1_1;
             },
@@ -28,8 +27,12 @@ System.register(['@angular/core', '@angular/router', "@angular/forms", './distri
             },
             function (district_service_1_1) {
                 district_service_1 = district_service_1_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
+            /**
+            * name
+            */
             DistrictDetailsComponent = (function () {
                 function DistrictDetailsComponent(router, route, fomBuilder, DistrictService) {
                     this.router = router;
@@ -175,17 +178,20 @@ System.register(['@angular/core', '@angular/router', "@angular/forms", './distri
                         this.formFields[ElementId] = clicked;
                     }
                 };
-                DistrictDetailsComponent = __decorate([
-                    core_1.Component({
-                        selector: 'district-details',
-                        templateUrl: './larangular/resources/assets/typescript/locations/districts/district.details.html',
-                        styles: ["\n    "]
-                    }), 
-                    __metadata('design:paramtypes', [router_1.Router, router_1.ActivatedRoute, forms_1.FormBuilder, district_service_1.DistrictService])
-                ], DistrictDetailsComponent);
                 return DistrictDetailsComponent;
             }());
+            DistrictDetailsComponent = __decorate([
+                core_1.Component({
+                    selector: 'district-details',
+                    templateUrl: './larangular/resources/assets/typescript/locations/districts/district.details.html',
+                    styles: ["\n    "]
+                }),
+                __metadata("design:paramtypes", [router_1.Router,
+                    router_1.ActivatedRoute,
+                    forms_1.FormBuilder,
+                    district_service_1.DistrictService])
+            ], DistrictDetailsComponent);
             exports_1("DistrictDetailsComponent", DistrictDetailsComponent);
         }
-    }
+    };
 });

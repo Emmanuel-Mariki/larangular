@@ -1,10 +1,9 @@
-System.register(['@angular/router', './cat.component', './cat.form', './cat.details'], function(exports_1, context_1) {
+System.register(["@angular/router", "./cat.component", "./cat.form", "./cat.details"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var router_1, cat_component_1, cat_form_1, cat_details_1;
-    var CatRoutes, CatRouteProviders, CatRouting;
+    var router_1, cat_component_1, cat_form_1, cat_details_1, CatRoutes, CatRouteProviders, CatRouting;
     return {
-        setters:[
+        setters: [
             function (router_1_1) {
                 router_1 = router_1_1;
             },
@@ -16,8 +15,9 @@ System.register(['@angular/router', './cat.component', './cat.form', './cat.deta
             },
             function (cat_details_1_1) {
                 cat_details_1 = cat_details_1_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
             CatRoutes = [
                 {
                     path: 'larangular/dashboard/property-categories',
@@ -44,5 +44,5 @@ System.register(['@angular/router', './cat.component', './cat.form', './cat.deta
             exports_1("CatRouteProviders", CatRouteProviders = []);
             exports_1("CatRouting", CatRouting = router_1.RouterModule.forChild(CatRoutes));
         }
-    }
+    };
 });

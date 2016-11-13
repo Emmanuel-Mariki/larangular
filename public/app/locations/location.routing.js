@@ -1,10 +1,9 @@
-System.register(['@angular/router', './countries/country.component', './countries/country.form', './countries/country.details', './countries/country.city', './cities/city.component', './cities/city.form', './cities/city.details', './districts/district.component', './districts/district.form'], function(exports_1, context_1) {
+System.register(["@angular/router", "./countries/country.component", "./countries/country.form", "./countries/country.details", "./countries/country.city", "./cities/city.component", "./cities/city.form", "./cities/city.details", "./districts/district.component", "./districts/district.form"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var router_1, country_component_1, country_form_1, country_details_1, country_city_1, city_component_1, city_form_1, city_details_1, district_component_1, district_form_1;
-    var LocationRoutes, LocationRouteProviders, LocationRouting;
+    var router_1, country_component_1, country_form_1, country_details_1, country_city_1, city_component_1, city_form_1, city_details_1, district_component_1, district_form_1, LocationRoutes, LocationRouteProviders, LocationRouting;
     return {
-        setters:[
+        setters: [
             function (router_1_1) {
                 router_1 = router_1_1;
             },
@@ -34,8 +33,9 @@ System.register(['@angular/router', './countries/country.component', './countrie
             },
             function (district_form_1_1) {
                 district_form_1 = district_form_1_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
             LocationRoutes = [
                 {
                     path: 'larangular/dashboard/countries',
@@ -116,5 +116,5 @@ System.register(['@angular/router', './countries/country.component', './countrie
             exports_1("LocationRouteProviders", LocationRouteProviders = []);
             exports_1("LocationRouting", LocationRouting = router_1.RouterModule.forChild(LocationRoutes));
         }
-    }
+    };
 });

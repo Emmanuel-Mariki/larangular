@@ -2,20 +2,25 @@ import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import{ DashboardComponent } from './dashboard.component';
-import{ ProfileComponent } from './profile/profile';
+// import{ ProfileComponent } from './profile/profile';
+// import{ AdminComponent } from './admin/admin';
 
 const DashboardRoutes: Routes = [
     { 
-      path: 'dashboard',
+      path: 'larangular/dashboard',
       children:[
           {
               path:'',
               component:DashboardComponent
-          },
-          {
-              path:'profile',
-              component:ProfileComponent
           }
+        //   {
+        //       path:'profile',
+        //       component:ProfileComponent
+        //   },
+        //   {
+        //       path:'admin',
+        //       component:AdminComponent
+        //   }
       ]
     }
 ];

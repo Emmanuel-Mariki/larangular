@@ -1,6 +1,5 @@
-System.register(["@angular/core"], function(exports_1, context_1) {
+System.register(["@angular/core"], function (exports_1, context_1) {
     "use strict";
-    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10,29 +9,46 @@ System.register(["@angular/core"], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
-    var TypeComponent;
+    var __moduleName = context_1 && context_1.id;
+    var core_1, TypeComponent;
     return {
-        setters:[
+        setters: [
             function (core_1_1) {
                 core_1 = core_1_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
             TypeComponent = (function () {
                 function TypeComponent() {
                     this.ActionTitle = 'Type list';
+                    // @Output() open: EventEmitter<any> = new EventEmitter();
+                    // @Output() close: EventEmitter<any> = new EventEmitter();
+                    // toggle() 
+                    // {
+                    //     this.visible = !this.visible;
+                    //     if (this.visible) 
+                    //     {
+                    //         this.ActionTitle ='Add property types'
+                    //         this.open.emit({newValue:this.visible});
+                    //     } 
+                    //     else 
+                    //     {
+                    //         this.ActionTitle = 'Type list';
+                    //         this.close.emit({newValue:this.visible});
+                    //     }
+                    // }
                 }
-                TypeComponent = __decorate([
-                    core_1.Component({
-                        selector: 'property-type',
-                        template: "\n        <property-type-list></property-type-list>\n    ",
-                        styles: ["\n        .panel-default>.panel-heading>.title\n        {\n            color: #663663;\n            font-family: Arial, Helvetica, sans-serif;\n            font-size: 200%;\n        }\n        .panel-default>.panel-heading>.btn\n        {\n            position: relative;\n            top: -5px;\n            margin-left:5px;\n        }\n    "]
-                    }), 
-                    __metadata('design:paramtypes', [])
-                ], TypeComponent);
                 return TypeComponent;
             }());
+            TypeComponent = __decorate([
+                core_1.Component({
+                    selector: 'property-type',
+                    template: "\n        <property-type-list></property-type-list>\n    ",
+                    styles: ["\n        .panel-default>.panel-heading>.title\n        {\n            color: #663663;\n            font-family: Arial, Helvetica, sans-serif;\n            font-size: 200%;\n        }\n        .panel-default>.panel-heading>.btn\n        {\n            position: relative;\n            top: -5px;\n            margin-left:5px;\n        }\n    "]
+                }),
+                __metadata("design:paramtypes", [])
+            ], TypeComponent);
             exports_1("TypeComponent", TypeComponent);
         }
-    }
+    };
 });

@@ -1,6 +1,5 @@
-System.register(['@angular/core', '@angular/router', "@angular/forms", './category', './cat.service', '../types/type.service'], function(exports_1, context_1) {
+System.register(["@angular/core", "@angular/router", "@angular/forms", "./category", "./cat.service", "../types/type.service"], function (exports_1, context_1) {
     "use strict";
-    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10,10 +9,10 @@ System.register(['@angular/core', '@angular/router', "@angular/forms", './catego
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, forms_1, category_1, cat_service_1, type_service_1;
-    var CatDetailsComponent;
+    var __moduleName = context_1 && context_1.id;
+    var core_1, router_1, forms_1, category_1, cat_service_1, type_service_1, CatDetailsComponent;
     return {
-        setters:[
+        setters: [
             function (core_1_1) {
                 core_1 = core_1_1;
             },
@@ -31,8 +30,12 @@ System.register(['@angular/core', '@angular/router', "@angular/forms", './catego
             },
             function (type_service_1_1) {
                 type_service_1 = type_service_1_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
+            /**
+            * name
+            */
             CatDetailsComponent = (function () {
                 function CatDetailsComponent(router, route, fomBuilder, TypeService, CateogoryService) {
                     this.router = router;
@@ -189,17 +192,21 @@ System.register(['@angular/core', '@angular/router', "@angular/forms", './catego
                         this.formFields[ElementId] = clicked;
                     }
                 };
-                CatDetailsComponent = __decorate([
-                    core_1.Component({
-                        selector: 'prop-type-cat-details',
-                        templateUrl: './larangular/resources/assets/typescript/categories/cat.details.html',
-                        styles: ["\n         .panel-default>.panel-body>form>.row>.col-md-12\n        {\n            padding:20px;\n            border-bottom:1px solid #d3e0e9;\n        }\n         .panel-default>.panel-body>form>.row>.col-md-12>.row>.col-md-3\n        {\n                color: #898;\n        }        \n    "]
-                    }), 
-                    __metadata('design:paramtypes', [router_1.Router, router_1.ActivatedRoute, forms_1.FormBuilder, type_service_1.TypeService, cat_service_1.CatService])
-                ], CatDetailsComponent);
                 return CatDetailsComponent;
             }());
+            CatDetailsComponent = __decorate([
+                core_1.Component({
+                    selector: 'prop-type-cat-details',
+                    templateUrl: './larangular/resources/assets/typescript/categories/cat.details.html',
+                    styles: ["\n         .panel-default>.panel-body>form>.row>.col-md-12\n        {\n            padding:20px;\n            border-bottom:1px solid #d3e0e9;\n        }\n         .panel-default>.panel-body>form>.row>.col-md-12>.row>.col-md-3\n        {\n                color: #898;\n        }        \n    "]
+                }),
+                __metadata("design:paramtypes", [router_1.Router,
+                    router_1.ActivatedRoute,
+                    forms_1.FormBuilder,
+                    type_service_1.TypeService,
+                    cat_service_1.CatService])
+            ], CatDetailsComponent);
             exports_1("CatDetailsComponent", CatDetailsComponent);
         }
-    }
+    };
 });

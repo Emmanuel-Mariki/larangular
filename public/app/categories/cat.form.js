@@ -1,6 +1,5 @@
-System.register(['@angular/core', "@angular/forms", '@angular/router', './category', './cat.service', '../types/type.service'], function(exports_1, context_1) {
+System.register(["@angular/core", "@angular/forms", "@angular/router", "./category", "./cat.service", "../types/type.service"], function (exports_1, context_1) {
     "use strict";
-    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10,10 +9,10 @@ System.register(['@angular/core', "@angular/forms", '@angular/router', './catego
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, forms_1, router_1, category_1, cat_service_1, type_service_1;
-    var CatFormComponent;
+    var __moduleName = context_1 && context_1.id;
+    var core_1, forms_1, router_1, category_1, cat_service_1, type_service_1, CatFormComponent;
     return {
-        setters:[
+        setters: [
             function (core_1_1) {
                 core_1 = core_1_1;
             },
@@ -31,8 +30,12 @@ System.register(['@angular/core', "@angular/forms", '@angular/router', './catego
             },
             function (type_service_1_1) {
                 type_service_1 = type_service_1_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
+            /**
+            * name
+            */
             CatFormComponent = (function () {
                 function CatFormComponent(router, route, fomBuilder, TypeService, CateogoryService) {
                     this.router = router;
@@ -178,17 +181,21 @@ System.register(['@angular/core', "@angular/forms", '@angular/router', './catego
                         }
                     }
                 };
-                CatFormComponent = __decorate([
-                    core_1.Component({
-                        selector: 'prop-cat-form',
-                        templateUrl: './larangular/resources/assets/typescript/categories/cat.form.html',
-                        styles: ["\n        input[type=text].ng-valid,\n        select.ng-valid,\n        input[type=number].ng-valid,\n        textarea.ng-valid{\n            border-width: 2px;\n            background-color: #FAFFBD;\n        }\n\n        input[type=text],input[type=number],select{\n            height: 45px;\n            font-size: 110%;\n        }\n        textarea{\n            min-height: 150px!important;\n            font-size: 110%;\n            max-width: 100% !important;\n        }\n        label\n        {\n            color: #898;\n            font-size: 120%\n        }\n        .error\n        {\n            color: #a94442;\n            font-size: 105%;\n        }\n        input[type=submit]{\n            color: #fff;\n        }\n        .has-error{    border-color: #a94442;}\n    "]
-                    }), 
-                    __metadata('design:paramtypes', [router_1.Router, router_1.ActivatedRoute, forms_1.FormBuilder, type_service_1.TypeService, cat_service_1.CatService])
-                ], CatFormComponent);
                 return CatFormComponent;
             }());
+            CatFormComponent = __decorate([
+                core_1.Component({
+                    selector: 'prop-cat-form',
+                    templateUrl: './larangular/resources/assets/typescript/categories/cat.form.html',
+                    styles: ["\n        input[type=text].ng-valid,\n        select.ng-valid,\n        input[type=number].ng-valid,\n        textarea.ng-valid{\n            border-width: 2px;\n            background-color: #FAFFBD;\n        }\n\n        input[type=text],input[type=number],select{\n            height: 45px;\n            font-size: 110%;\n        }\n        textarea{\n            min-height: 150px!important;\n            font-size: 110%;\n            max-width: 100% !important;\n        }\n        label\n        {\n            color: #898;\n            font-size: 120%\n        }\n        .error\n        {\n            color: #a94442;\n            font-size: 105%;\n        }\n        input[type=submit]{\n            color: #fff;\n        }\n        .has-error{    border-color: #a94442;}\n    "]
+                }),
+                __metadata("design:paramtypes", [router_1.Router,
+                    router_1.ActivatedRoute,
+                    forms_1.FormBuilder,
+                    type_service_1.TypeService,
+                    cat_service_1.CatService])
+            ], CatFormComponent);
             exports_1("CatFormComponent", CatFormComponent);
         }
-    }
+    };
 });

@@ -1,6 +1,5 @@
-System.register(['@angular/core', '@angular/router', "@angular/forms", './district.service'], function(exports_1, context_1) {
+System.register(["@angular/core", "@angular/router", "@angular/forms", "./district.service"], function (exports_1, context_1) {
     "use strict";
-    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10,10 +9,10 @@ System.register(['@angular/core', '@angular/router', "@angular/forms", './distri
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, forms_1, district_service_1;
-    var DistrictListComponent;
+    var __moduleName = context_1 && context_1.id;
+    var core_1, router_1, forms_1, district_service_1, DistrictListComponent;
     return {
-        setters:[
+        setters: [
             function (core_1_1) {
                 core_1 = core_1_1;
             },
@@ -25,8 +24,12 @@ System.register(['@angular/core', '@angular/router', "@angular/forms", './distri
             },
             function (district_service_1_1) {
                 district_service_1 = district_service_1_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
+            /**
+            * name
+            */
             DistrictListComponent = (function () {
                 function DistrictListComponent(router, route, fomBuilder, DistrictService) {
                     this.router = router;
@@ -73,25 +76,28 @@ System.register(['@angular/core', '@angular/router', "@angular/forms", './distri
                         _this.successMessage = 'District activated successfuly';
                     });
                 };
-                __decorate([
-                    core_1.Input(), 
-                    __metadata('design:type', String)
-                ], DistrictListComponent.prototype, "term", void 0);
-                __decorate([
-                    core_1.Input(), 
-                    __metadata('design:type', String)
-                ], DistrictListComponent.prototype, "ActionTitle", void 0);
-                DistrictListComponent = __decorate([
-                    core_1.Component({
-                        selector: 'district-list',
-                        templateUrl: './larangular/resources/assets/typescript/locations/districts/district.list.html',
-                        styles: ["\n        th, td\n        {\n            text-align:center;\n        }\n        #term\n        {\n            position:relative;\n            top:3px;\n            border-radius:3px;\n        }\n    "],
-                    }), 
-                    __metadata('design:paramtypes', [router_1.Router, router_1.ActivatedRoute, forms_1.FormBuilder, district_service_1.DistrictService])
-                ], DistrictListComponent);
                 return DistrictListComponent;
             }());
+            __decorate([
+                core_1.Input(),
+                __metadata("design:type", String)
+            ], DistrictListComponent.prototype, "term", void 0);
+            __decorate([
+                core_1.Input(),
+                __metadata("design:type", String)
+            ], DistrictListComponent.prototype, "ActionTitle", void 0);
+            DistrictListComponent = __decorate([
+                core_1.Component({
+                    selector: 'district-list',
+                    templateUrl: './larangular/resources/assets/typescript/locations/districts/district.list.html',
+                    styles: ["\n        th, td\n        {\n            text-align:center;\n        }\n        #term\n        {\n            position:relative;\n            top:3px;\n            border-radius:3px;\n        }\n    "],
+                }),
+                __metadata("design:paramtypes", [router_1.Router,
+                    router_1.ActivatedRoute,
+                    forms_1.FormBuilder,
+                    district_service_1.DistrictService])
+            ], DistrictListComponent);
             exports_1("DistrictListComponent", DistrictListComponent);
         }
-    }
+    };
 });

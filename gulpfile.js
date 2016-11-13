@@ -83,8 +83,6 @@ gulp.task('CSS', function () {
 });
 
 gulp.task('watch', function() {
-    return gulp.watch(
-        ['resources/assets/typescript/**/*.ts','resources/assets/typescript/**/*.html'],
-         ['TYPESCRIPT'])
+    return gulp.watch(['resources/assets/typescript/**/*.ts'],['TYPESCRIPT'])
 });
 gulp.task('default', ['TYPESCRIPT', 'CSS']);

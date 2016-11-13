@@ -1,6 +1,5 @@
-System.register(["@angular/core", '@angular/router', './type.service'], function(exports_1, context_1) {
+System.register(["@angular/core", "@angular/router", "./type.service"], function (exports_1, context_1) {
     "use strict";
-    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10,10 +9,10 @@ System.register(["@angular/core", '@angular/router', './type.service'], function
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, type_service_1;
-    var TypeListComponent;
+    var __moduleName = context_1 && context_1.id;
+    var core_1, router_1, type_service_1, TypeListComponent;
     return {
-        setters:[
+        setters: [
             function (core_1_1) {
                 core_1 = core_1_1;
             },
@@ -22,8 +21,9 @@ System.register(["@angular/core", '@angular/router', './type.service'], function
             },
             function (type_service_1_1) {
                 type_service_1 = type_service_1_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
             TypeListComponent = (function () {
                 function TypeListComponent(route, router, service) {
                     this.route = route;
@@ -61,17 +61,19 @@ System.register(["@angular/core", '@angular/router', './type.service'], function
                         _this.successMessage = 'Property type activated successfuly';
                     });
                 };
-                TypeListComponent = __decorate([
-                    core_1.Component({
-                        selector: 'property-type-list',
-                        templateUrl: './larangular/resources/assets/typescript/types/type-list.component.html',
-                        styles: ["\n        th, td\n        {\n            text-align:center;\n        }\n    "]
-                    }), 
-                    __metadata('design:paramtypes', [router_1.ActivatedRoute, router_1.Router, type_service_1.TypeService])
-                ], TypeListComponent);
                 return TypeListComponent;
             }());
+            TypeListComponent = __decorate([
+                core_1.Component({
+                    selector: 'property-type-list',
+                    templateUrl: './larangular/resources/assets/typescript/types/type-list.component.html',
+                    styles: ["\n        th, td\n        {\n            text-align:center;\n        }\n        .btn,.title\n        {\n            margin-top:15px;\n            margin-bottom:15px;\n        }\n    "]
+                }),
+                __metadata("design:paramtypes", [router_1.ActivatedRoute,
+                    router_1.Router,
+                    type_service_1.TypeService])
+            ], TypeListComponent);
             exports_1("TypeListComponent", TypeListComponent);
         }
-    }
+    };
 });

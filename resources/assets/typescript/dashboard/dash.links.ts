@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,OnInit,EventEmitter } from '@angular/core';
 
 
 @Component({
@@ -12,9 +12,13 @@ import { Component,OnInit } from '@angular/core';
         }
         .dash-link>a
         {
-            color:#FFF;
-            font-size:100%;
-            font-weight:800;
+            color: #FFF;
+            font-size: 100%;
+            font-weight: 800;
+            padding: 10px;
+            margin: auto;
+            text-align: center;
+            cursor:pointer;
         }
         .dash-link>a:hover
         {
@@ -34,14 +38,23 @@ import { Component,OnInit } from '@angular/core';
         }
     `],
     inputs:[],
-    outputs:[],
+    outputs:['showSelectedView'],
 
 })
 
 export class DashLinksComponent implements OnInit {
 
-constructor() {}
+    showSelectedView = new EventEmitter()
 
-ngOnInit(){}
+    constructor() {}
+
+    ngOnInit(){}
+
+    activateView(event)
+    {
+        this.showSelectedView.emit(event);
+
+        console.log(event);
+    }
 
 }

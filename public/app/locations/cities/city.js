@@ -1,10 +1,10 @@
-System.register([], function(exports_1, context_1) {
+System.register([], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var City;
     return {
-        setters:[],
-        execute: function() {
+        setters: [],
+        execute: function () {
             City = (function () {
                 function City() {
                 }
@@ -12,5 +12,5 @@ System.register([], function(exports_1, context_1) {
             }());
             exports_1("City", City);
         }
-    }
+    };
 });

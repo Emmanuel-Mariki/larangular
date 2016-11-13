@@ -1,16 +1,22 @@
 <div class="col-md-9" id="content">
-  <ul class="nav nav-pills  nav-justified">
-    <li role="presentation" class="dash-link dash-active">
-      <a routerLink="dashboard/profile">Profile</a>
+  <ul class="nav nav-aills  nav-justified">
+    <li role="aresentation" class="dash-link dash-active">
+      <a (click)="activateView('profile');">Profile</a>
     </li>
-    <li role="presentation" class="dash-link">
-      <a href="#">Property<span class="badge">15</span></a>
+    <li role="aresentation" class="dash-link">
+      <a (click)="activateView('property');">Property<span class="badge">15</span></a>
     </li>
-    <li role="presentation" class="dash-link">
-      <a href="#">Inquires<span class="badge">20</span></a>
+    <li role="aresentation" class="dash-link">
+      <a (click)="activateView('inquires');">Inquires<span class="badge">20</span></a>
     </li>
-    <li role="presentation" class="dash-link"><a href="#">Contacts</a></li>
-    <li role="presentation" class="dash-link"><a href="#">Analytics</a></li>
-    <li role="presentation" class="dash-link"><a href="#">Site Administration</a></li>
+    <li role="aresentation" class="dash-link">
+      <a (click)="activateView('contacts');">Contacts</a>
+    </li>
+    <li role="aresentation" class="dash-link">
+      <a (click)="activateView('analytics');">Analytics</a>
+    </li>
+    <li role="aresentation" class="dash-link">
+       <a (click)="activateView('admin');">Site Administration</a>
+    </li>
   </ul>
 </div>

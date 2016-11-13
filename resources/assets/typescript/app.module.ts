@@ -25,10 +25,14 @@ import{ LocationModule }from './locations/location.module'
 import{ DashboardModule }from './dashboard/dashboard.module';;
 import{ PropertyTypeModule }from './types/type.module';
 
+//import {Sticky} from 'ng2-sticky-kit/ng2-sticky-kit';
+
 
 @NgModule({
   imports:
   [ routing,
+  
+    DashboardModule,
     CatModule,
     HttpModule,
     AuthModule,
@@ -37,11 +41,11 @@ import{ PropertyTypeModule }from './types/type.module';
     LeftNavModule,
     BrowserModule,
     LocationModule,
-    DashboardModule,
     PropertyTypeModule,
   ],
   declarations:
   [ 
+   // Sticky,
     AppComponent, 
     HomeComponent,
     SearchBoxComponent,

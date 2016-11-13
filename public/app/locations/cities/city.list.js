@@ -1,6 +1,5 @@
-System.register(['@angular/core', '@angular/router', "@angular/forms", './city.service'], function(exports_1, context_1) {
+System.register(["@angular/core", "@angular/router", "@angular/forms", "./city.service"], function (exports_1, context_1) {
     "use strict";
-    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10,10 +9,10 @@ System.register(['@angular/core', '@angular/router', "@angular/forms", './city.s
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, forms_1, city_service_1;
-    var CityListComponent;
+    var __moduleName = context_1 && context_1.id;
+    var core_1, router_1, forms_1, city_service_1, CityListComponent;
     return {
-        setters:[
+        setters: [
             function (core_1_1) {
                 core_1 = core_1_1;
             },
@@ -25,8 +24,12 @@ System.register(['@angular/core', '@angular/router', "@angular/forms", './city.s
             },
             function (city_service_1_1) {
                 city_service_1 = city_service_1_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
+            /**
+            * name
+            */
             CityListComponent = (function () {
                 function CityListComponent(router, route, fomBuilder, CityService) {
                     this.router = router;
@@ -83,25 +86,28 @@ System.register(['@angular/core', '@angular/router', "@angular/forms", './city.s
                         _this.successMessage = 'City activated successfuly';
                     });
                 };
-                __decorate([
-                    core_1.Input(), 
-                    __metadata('design:type', Object)
-                ], CityListComponent.prototype, "term", void 0);
-                __decorate([
-                    core_1.Input(), 
-                    __metadata('design:type', String)
-                ], CityListComponent.prototype, "ActionTitle", void 0);
-                CityListComponent = __decorate([
-                    core_1.Component({
-                        selector: 'city-list',
-                        templateUrl: './larangular/resources/assets/typescript/locations/cities/city.list.html',
-                        styles: ["\n        th, td\n        {\n            text-align:center;\n        }\n        #term\n        {\n            position:relative;\n            top:3px;\n            border-radius:3px;\n        }\n    "],
-                    }), 
-                    __metadata('design:paramtypes', [router_1.Router, router_1.ActivatedRoute, forms_1.FormBuilder, city_service_1.CityService])
-                ], CityListComponent);
                 return CityListComponent;
             }());
+            __decorate([
+                core_1.Input(),
+                __metadata("design:type", Object)
+            ], CityListComponent.prototype, "term", void 0);
+            __decorate([
+                core_1.Input(),
+                __metadata("design:type", String)
+            ], CityListComponent.prototype, "ActionTitle", void 0);
+            CityListComponent = __decorate([
+                core_1.Component({
+                    selector: 'city-list',
+                    templateUrl: './larangular/resources/assets/typescript/locations/cities/city.list.html',
+                    styles: ["\n        th, td\n        {\n            text-align:center;\n        }\n        #term\n        {\n            position:relative;\n            top:3px;\n            border-radius:3px;\n        }\n    "],
+                }),
+                __metadata("design:paramtypes", [router_1.Router,
+                    router_1.ActivatedRoute,
+                    forms_1.FormBuilder,
+                    city_service_1.CityService])
+            ], CityListComponent);
             exports_1("CityListComponent", CityListComponent);
         }
-    }
+    };
 });

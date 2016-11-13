@@ -1,6 +1,5 @@
-System.register(['@angular/core', '@angular/router', "@angular/forms", './country.service'], function(exports_1, context_1) {
+System.register(["@angular/core", "@angular/router", "@angular/forms", "./country.service"], function (exports_1, context_1) {
     "use strict";
-    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10,10 +9,10 @@ System.register(['@angular/core', '@angular/router', "@angular/forms", './countr
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, forms_1, country_service_1;
-    var CountryListComponent;
+    var __moduleName = context_1 && context_1.id;
+    var core_1, router_1, forms_1, country_service_1, CountryListComponent;
     return {
-        setters:[
+        setters: [
             function (core_1_1) {
                 core_1 = core_1_1;
             },
@@ -25,8 +24,12 @@ System.register(['@angular/core', '@angular/router', "@angular/forms", './countr
             },
             function (country_service_1_1) {
                 country_service_1 = country_service_1_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
+            /**
+            * name
+            */
             CountryListComponent = (function () {
                 function CountryListComponent(router, route, fomBuilder, CountryService) {
                     this.router = router;
@@ -72,25 +75,28 @@ System.register(['@angular/core', '@angular/router', "@angular/forms", './countr
                         _this.successMessage = 'Country activated successfuly';
                     });
                 };
-                __decorate([
-                    core_1.Input(), 
-                    __metadata('design:type', Object)
-                ], CountryListComponent.prototype, "term", void 0);
-                __decorate([
-                    core_1.Input(), 
-                    __metadata('design:type', String)
-                ], CountryListComponent.prototype, "ActionTitle", void 0);
-                CountryListComponent = __decorate([
-                    core_1.Component({
-                        selector: 'country-list',
-                        templateUrl: './larangular/resources/assets/typescript/locations/countries/country.list.html',
-                        styles: ["\n        th, td\n        {\n            text-align:center;\n        }\n        #term\n        {\n            position:relative;\n            top:3px;\n            border-radius:3px;\n        }\n    "],
-                    }), 
-                    __metadata('design:paramtypes', [router_1.Router, router_1.ActivatedRoute, forms_1.FormBuilder, country_service_1.CountryService])
-                ], CountryListComponent);
                 return CountryListComponent;
             }());
+            __decorate([
+                core_1.Input(),
+                __metadata("design:type", Object)
+            ], CountryListComponent.prototype, "term", void 0);
+            __decorate([
+                core_1.Input(),
+                __metadata("design:type", String)
+            ], CountryListComponent.prototype, "ActionTitle", void 0);
+            CountryListComponent = __decorate([
+                core_1.Component({
+                    selector: 'country-list',
+                    templateUrl: './larangular/resources/assets/typescript/locations/countries/country.list.html',
+                    styles: ["\n        th, td\n        {\n            text-align:center;\n        }\n        #term\n        {\n            position:relative;\n            top:3px;\n            border-radius:3px;\n        }\n    "],
+                }),
+                __metadata("design:paramtypes", [router_1.Router,
+                    router_1.ActivatedRoute,
+                    forms_1.FormBuilder,
+                    country_service_1.CountryService])
+            ], CountryListComponent);
             exports_1("CountryListComponent", CountryListComponent);
         }
-    }
+    };
 });

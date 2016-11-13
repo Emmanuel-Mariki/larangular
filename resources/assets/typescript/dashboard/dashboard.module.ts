@@ -4,9 +4,12 @@ import { FormsModule,ReactiveFormsModule }from '@angular/forms';
 
 import { DashboardRouting,DashboardRouteProviders }from './dashboard.routing';
 
+import{ AdminComponent } from './admin/admin';
+import{ ProfileComponent } from './profile/profile';
 import{ DashboardComponent } from './dashboard.component';
 import{ DashLinksComponent } from './dash.links';
-import{ ProfileComponent } from './profile/profile';
+import{ ProfilePropertyListingComponent } from './listing/listing';
+import{ PropertyTypeModule }from '../types/type.module';
 
 
 @NgModule({
@@ -15,14 +18,18 @@ import{ ProfileComponent } from './profile/profile';
         FormsModule,
         CommonModule,
         DashboardRouting,
+        PropertyTypeModule,
         ReactiveFormsModule,
+        
         
     ],
     declarations:
     [ 
+        AdminComponent,
         ProfileComponent,
         DashboardComponent,
         DashLinksComponent,
+        ProfilePropertyListingComponent,
     ],
     exports: 
     [ 

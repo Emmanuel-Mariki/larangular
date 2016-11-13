@@ -1,6 +1,5 @@
-System.register(["@angular/core", "@angular/forms", '@angular/router', './type.service', './type'], function(exports_1, context_1) {
+System.register(["@angular/core", "@angular/forms", "@angular/router", "./type.service", "./type"], function (exports_1, context_1) {
     "use strict";
-    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10,10 +9,10 @@ System.register(["@angular/core", "@angular/forms", '@angular/router', './type.s
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, forms_1, router_1, type_service_1, type_1;
-    var TypeFormComponent;
+    var __moduleName = context_1 && context_1.id;
+    var core_1, forms_1, router_1, type_service_1, type_1, TypeFormComponent;
     return {
-        setters:[
+        setters: [
             function (core_1_1) {
                 core_1 = core_1_1;
             },
@@ -28,8 +27,9 @@ System.register(["@angular/core", "@angular/forms", '@angular/router', './type.s
             },
             function (type_1_1) {
                 type_1 = type_1_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
             TypeFormComponent = (function () {
                 function TypeFormComponent(router, route, _fomBuilder, _Service) {
                     this.router = router;
@@ -168,25 +168,28 @@ System.register(["@angular/core", "@angular/forms", '@angular/router', './type.s
                         }
                     }
                 };
-                __decorate([
-                    core_1.Input(), 
-                    __metadata('design:type', Object)
-                ], TypeFormComponent.prototype, "types", void 0);
-                __decorate([
-                    core_1.Output(), 
-                    __metadata('design:type', Object)
-                ], TypeFormComponent.prototype, "newPropTypes", void 0);
-                TypeFormComponent = __decorate([
-                    core_1.Component({
-                        selector: 'property-type-form',
-                        templateUrl: './larangular/resources/assets/typescript/types/type-form.component.html',
-                        styles: ["\n        input[type=text].ng-valid,\n        select.ng-valid,\n        input[type=number].ng-valid,\n        textarea.ng-valid{\n            border-width: 2px;\n            background-color: #FAFFBD;\n        }\n\n        input[type=text],input[type=number],select{\n            height: 45px;\n            font-size: 110%;\n        }\n        textarea{\n            min-height: 150px!important;\n            font-size: 110%;\n            max-width: 100% !important;\n        }\n        label\n        {\n            color: #898;\n            font-size: 120%\n        }\n        .error\n        {\n            color: #a94442;\n            font-size: 105%;\n        }\n        input[type=submit]{\n            color: #fff;\n        }\n        .has-error{    border-color: #a94442;}\n    "]
-                    }), 
-                    __metadata('design:paramtypes', [router_1.Router, router_1.ActivatedRoute, forms_1.FormBuilder, type_service_1.TypeService])
-                ], TypeFormComponent);
                 return TypeFormComponent;
             }());
+            __decorate([
+                core_1.Input(),
+                __metadata("design:type", Object)
+            ], TypeFormComponent.prototype, "types", void 0);
+            __decorate([
+                core_1.Output(),
+                __metadata("design:type", Object)
+            ], TypeFormComponent.prototype, "newPropTypes", void 0);
+            TypeFormComponent = __decorate([
+                core_1.Component({
+                    selector: 'property-type-form',
+                    templateUrl: './larangular/resources/assets/typescript/types/type-form.component.html',
+                    styles: ["\n        input[type=text].ng-valid,\n        select.ng-valid,\n        input[type=number].ng-valid,\n        textarea.ng-valid{\n            border-width: 2px;\n            background-color: #FAFFBD;\n        }\n\n        input[type=text],input[type=number],select{\n            height: 45px;\n            font-size: 110%;\n        }\n        textarea{\n            min-height: 150px!important;\n            font-size: 110%;\n            max-width: 100% !important;\n        }\n        label\n        {\n            color: #898;\n            font-size: 120%\n        }\n        .error\n        {\n            color: #a94442;\n            font-size: 105%;\n        }\n        input[type=submit]{\n            color: #fff;\n        }\n        .has-error{    border-color: #a94442;}\n    "]
+                }),
+                __metadata("design:paramtypes", [router_1.Router,
+                    router_1.ActivatedRoute,
+                    forms_1.FormBuilder,
+                    type_service_1.TypeService])
+            ], TypeFormComponent);
             exports_1("TypeFormComponent", TypeFormComponent);
         }
-    }
+    };
 });

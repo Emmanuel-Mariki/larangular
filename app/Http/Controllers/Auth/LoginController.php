@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 
-use Tymon\JWTAuth\Facades\JWTAuth;
+//use Tymon\JWTAuth\Facades\JWTAuth;
+use JWTAuth;
+//use Tymon\JWTAuth\Exceptions\JWTException;
 
 use Tymon\JWTAuth\Exceptions\JWTException;
 
@@ -47,12 +49,12 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         // grab credentials from the request
-        $credentials = $request->all()['Login'];
+        $credentials = $request->all();
 
         try {
             // attempt to verify the credentials and create a token for the user
             if (!$token = JWTAuth::attempt($credentials)) {
-                return response()->json(['error' => 'invalid_credentials'], 401);
+                return response()->json(['error' => 'invalid combination of password and email '], 401);
             }
         } catch (JWTException $e) {
             // something went wrong whilst attempting to encode the token

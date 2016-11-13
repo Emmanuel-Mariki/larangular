@@ -126,6 +126,7 @@ body
 {
   color: #999;
   border-radius: 0px; 
+  min-height: 50px;
 }
 #content input[type=submit]
 {

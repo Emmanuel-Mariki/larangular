@@ -13,6 +13,11 @@ import { PropertyTypes } from './type';
         {
             text-align:center;
         }
+        .btn,.title
+        {
+            margin-top:15px;
+            margin-bottom:15px;
+        }
     `]
 })
 

@@ -1,6 +1,5 @@
-System.register(['@angular/core', "@angular/forms", '@angular/router', './register.service'], function(exports_1, context_1) {
+System.register(["@angular/core", "@angular/forms", "@angular/router", "./register.service"], function (exports_1, context_1) {
     "use strict";
-    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10,10 +9,10 @@ System.register(['@angular/core', "@angular/forms", '@angular/router', './regist
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, forms_1, router_1, register_service_1;
-    var register, RegisterComponent;
+    var __moduleName = context_1 && context_1.id;
+    var core_1, forms_1, router_1, register_service_1, register, RegisterComponent;
     return {
-        setters:[
+        setters: [
             function (core_1_1) {
                 core_1 = core_1_1;
             },
@@ -25,8 +24,9 @@ System.register(['@angular/core', "@angular/forms", '@angular/router', './regist
             },
             function (register_service_1_1) {
                 register_service_1 = register_service_1_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
             register = (function () {
                 function register() {
                 }
@@ -105,17 +105,20 @@ System.register(['@angular/core', "@angular/forms", '@angular/router', './regist
                         }
                     }
                 };
-                RegisterComponent = __decorate([
-                    core_1.Component({
-                        selector: 'app-register',
-                        templateUrl: './larangular/resources/assets/typescript/auth/register/register.html',
-                        styles: ["\n        input[type=email].ng-valid,\n        input[type=password].ng-valid{\n            border-width: 2px;\n            background-color: #FAFFBD;\n        }\n\n        input[type=email],\n        input[type=password]\n        {\n            height: 45px;\n            font-size: 110%;\n            border-radius: 0px;\n        }\n        .error\n        {\n            color: #a94442;\n            font-size: 105%;\n        }\n        input[type=submit]{\n            color: #fff;\n        }\n        .has-error{ border-color: #a94442;}\n        #rememberMe{\n            position:relative;\n            top:-5px;\n        }\n        #content{\n            margin-top:5%;\n            border: 10px solid;\n        }\n        form\n        {\n            padding:20px;\n        }\n    "],
-                    }), 
-                    __metadata('design:paramtypes', [router_1.Router, router_1.ActivatedRoute, forms_1.FormBuilder, register_service_1.RegisterService])
-                ], RegisterComponent);
                 return RegisterComponent;
             }());
+            RegisterComponent = __decorate([
+                core_1.Component({
+                    selector: 'app-register',
+                    templateUrl: './larangular/resources/assets/typescript/auth/register/register.html',
+                    styles: ["\n        input[type=email].ng-valid,\n        input[type=password].ng-valid{\n            border-width: 2px;\n            background-color: #FAFFBD;\n        }\n\n        input[type=email],\n        input[type=password]\n        {\n            height: 45px;\n            font-size: 110%;\n            border-radius: 0px;\n        }\n        .error\n        {\n            color: #a94442;\n            font-size: 105%;\n        }\n        input[type=submit]{\n            color: #fff;\n        }\n        .has-error{ border-color: #a94442;}\n        #rememberMe{\n            position:relative;\n            top:-5px;\n        }\n        #content{\n            margin-top:5%;\n            border: 10px solid;\n        }\n        form\n        {\n            padding:20px;\n        }\n    "],
+                }),
+                __metadata("design:paramtypes", [router_1.Router,
+                    router_1.ActivatedRoute,
+                    forms_1.FormBuilder,
+                    register_service_1.RegisterService])
+            ], RegisterComponent);
             exports_1("RegisterComponent", RegisterComponent);
         }
-    }
+    };
 });

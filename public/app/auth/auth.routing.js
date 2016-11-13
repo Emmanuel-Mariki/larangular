@@ -1,10 +1,9 @@
-System.register(['@angular/router', "./auth.component", "./register/register", "./forgot/forgot.pass"], function(exports_1, context_1) {
+System.register(["@angular/router", "./auth.component", "./register/register", "./forgot/forgot.pass"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var router_1, auth_component_1, register_1, forgot_pass_1;
-    var AuthRoutes, AuthRouteProviders, AuthRouting;
+    var router_1, auth_component_1, register_1, forgot_pass_1, AuthRoutes, AuthRouteProviders, AuthRouting;
     return {
-        setters:[
+        setters: [
             function (router_1_1) {
                 router_1 = router_1_1;
             },
@@ -16,8 +15,9 @@ System.register(['@angular/router', "./auth.component", "./register/register", "
             },
             function (forgot_pass_1_1) {
                 forgot_pass_1 = forgot_pass_1_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
             AuthRoutes = [
                 {
                     path: 'larangular',
@@ -40,5 +40,5 @@ System.register(['@angular/router', "./auth.component", "./register/register", "
             exports_1("AuthRouteProviders", AuthRouteProviders = []);
             exports_1("AuthRouting", AuthRouting = router_1.RouterModule.forChild(AuthRoutes));
         }
-    }
+    };
 });

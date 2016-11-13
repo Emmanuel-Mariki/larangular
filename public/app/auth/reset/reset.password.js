@@ -1,6 +1,5 @@
-System.register(['@angular/core', "@angular/forms", '@angular/router', '../login/log', '../login/login.service'], function(exports_1, context_1) {
+System.register(["@angular/core", "@angular/forms", "@angular/router", "../login/log", "../login/login.service"], function (exports_1, context_1) {
     "use strict";
-    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10,10 +9,10 @@ System.register(['@angular/core', "@angular/forms", '@angular/router', '../login
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, forms_1, router_1, log_1, login_service_1;
-    var ResetPasswordComponent;
+    var __moduleName = context_1 && context_1.id;
+    var core_1, forms_1, router_1, log_1, login_service_1, ResetPasswordComponent;
     return {
-        setters:[
+        setters: [
             function (core_1_1) {
                 core_1 = core_1_1;
             },
@@ -28,8 +27,9 @@ System.register(['@angular/core', "@angular/forms", '@angular/router', '../login
             },
             function (login_service_1_1) {
                 login_service_1 = login_service_1_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
             ResetPasswordComponent = (function () {
                 function ResetPasswordComponent(router, route, fomBuilder, LoginService) {
                     this.router = router;
@@ -87,17 +87,20 @@ System.register(['@angular/core', "@angular/forms", '@angular/router', '../login
                         }
                     }
                 };
-                ResetPasswordComponent = __decorate([
-                    core_1.Component({
-                        selector: 'app-login',
-                        templateUrl: './larangular/resources/assets/typescript/auth/reset/reset.html',
-                        styles: ["\n        input[type=text].ng-valid,\n        select.ng-valid,\n        input[type=number].ng-valid,\n        textarea.ng-valid{\n            border-width: 2px;\n            background-color: #FAFFBD;\n        }\n\n        input[type=text],input[type=number],select{\n            height: 45px;\n            font-size: 110%;\n        }\n        textarea{\n            min-height: 150px!important;\n            font-size: 110%;\n            max-width: 100% !important;\n        }\n        .panel-default>.panel-heading {\n            color: #663663;\n            font-family: Arial, Helvetica, sans-serif;\n            font-size: 200%;\n        }\n\n        label\n        {\n            color: #898;\n            font-size: 120%\n        }\n        .error\n        {\n            color: #a94442;\n            font-size: 105%;\n        }\n        input[type=submit]{\n            color: #fff;\n        }\n        .has-error{    border-color: #a94442;}\n        #rememberMe{\n            position:relative;\n            top:-5px;\n        }\n    "]
-                    }), 
-                    __metadata('design:paramtypes', [router_1.Router, router_1.ActivatedRoute, forms_1.FormBuilder, login_service_1.LoginService])
-                ], ResetPasswordComponent);
                 return ResetPasswordComponent;
             }());
+            ResetPasswordComponent = __decorate([
+                core_1.Component({
+                    selector: 'app-login',
+                    templateUrl: './larangular/resources/assets/typescript/auth/reset/reset.html',
+                    styles: ["\n        input[type=text].ng-valid,\n        select.ng-valid,\n        input[type=number].ng-valid,\n        textarea.ng-valid{\n            border-width: 2px;\n            background-color: #FAFFBD;\n        }\n\n        input[type=text],input[type=number],select{\n            height: 45px;\n            font-size: 110%;\n        }\n        textarea{\n            min-height: 150px!important;\n            font-size: 110%;\n            max-width: 100% !important;\n        }\n        .panel-default>.panel-heading {\n            color: #663663;\n            font-family: Arial, Helvetica, sans-serif;\n            font-size: 200%;\n        }\n\n        label\n        {\n            color: #898;\n            font-size: 120%\n        }\n        .error\n        {\n            color: #a94442;\n            font-size: 105%;\n        }\n        input[type=submit]{\n            color: #fff;\n        }\n        .has-error{    border-color: #a94442;}\n        #rememberMe{\n            position:relative;\n            top:-5px;\n        }\n    "]
+                }),
+                __metadata("design:paramtypes", [router_1.Router,
+                    router_1.ActivatedRoute,
+                    forms_1.FormBuilder,
+                    login_service_1.LoginService])
+            ], ResetPasswordComponent);
             exports_1("ResetPasswordComponent", ResetPasswordComponent);
         }
-    }
+    };
 });

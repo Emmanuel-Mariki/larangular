@@ -6,13 +6,13 @@
         <meta property="csrf-token" name="csrf-token" content="{{ csrf_token() }}">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!--<link href="https://fonts.googleapis.com/css?family=Taviraj:700,800" rel="stylesheet">-->
 
         <title>Peruzi</title>
 
         {{ Html::style('public/css/app.css') }}
-        {{ Html::style('public/css/main.css') }}
         {{ Html::style('public/fonts/css/font-awesome.min.css') }}
+        {{ Html::style('public/css/main.css') }}
+        {{ Html::style('public/css/awesome-bootstrap-checkbox.css') }}
         <!-- 1. Load libraries -->
         <!-- Polyfill(s) for older browsers -->
         {{ Html::script('public/core-js/client/shim.min.js') }}

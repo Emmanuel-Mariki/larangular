@@ -1,6 +1,5 @@
-System.register(['@angular/core', '@angular/http', 'rxjs/Observable', 'rxjs/add/observable/throw', 'rxjs/add/operator/catch', 'rxjs/add/operator/map', 'rxjs/add/operator/toArray'], function(exports_1, context_1) {
+System.register(["@angular/core", "@angular/http", "rxjs/Observable", "rxjs/add/observable/throw", "rxjs/add/operator/catch", "rxjs/add/operator/map", "rxjs/add/operator/toArray"], function (exports_1, context_1) {
     "use strict";
-    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10,10 +9,10 @@ System.register(['@angular/core', '@angular/http', 'rxjs/Observable', 'rxjs/add/
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1, Observable_1;
-    var TypeService;
+    var __moduleName = context_1 && context_1.id;
+    var core_1, http_1, Observable_1, TypeService;
     return {
-        setters:[
+        setters: [
             function (core_1_1) {
                 core_1 = core_1_1;
             },
@@ -23,11 +22,16 @@ System.register(['@angular/core', '@angular/http', 'rxjs/Observable', 'rxjs/add/
             function (Observable_1_1) {
                 Observable_1 = Observable_1_1;
             },
-            function (_1) {},
-            function (_2) {},
-            function (_3) {},
-            function (_4) {}],
-        execute: function() {
+            function (_1) {
+            },
+            function (_2) {
+            },
+            function (_3) {
+            },
+            function (_4) {
+            }
+        ],
+        execute: function () {
             TypeService = (function () {
                 function TypeService(http) {
                     this.http = http;
@@ -68,13 +72,13 @@ System.register(['@angular/core', '@angular/http', 'rxjs/Observable', 'rxjs/add/
                         .map(this.ExctractData)
                         .catch(this.ThrowError);
                 };
-                TypeService = __decorate([
-                    core_1.Injectable(), 
-                    __metadata('design:paramtypes', [http_1.Http])
-                ], TypeService);
                 return TypeService;
             }());
+            TypeService = __decorate([
+                core_1.Injectable(),
+                __metadata("design:paramtypes", [http_1.Http])
+            ], TypeService);
             exports_1("TypeService", TypeService);
         }
-    }
+    };
 });

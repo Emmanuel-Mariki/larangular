@@ -4,8 +4,7 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/var/www/html/larangular/app/Http/Controllers/Auth/LoginController.php</file>
-            <file>file:/var/www/html/larangular/config/auth.php</file>
-            <file>file:/var/www/html/larangular/composer.json</file>
+            <file>file:/var/www/html/larangular/config/app.php</file>
             <file>file:/var/www/html/larangular/app/User.php</file>
             <file>file:/var/www/html/larangular/public/index.php</file>
         </group>

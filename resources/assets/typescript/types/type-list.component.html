@@ -1,15 +1,15 @@
 
-<div class="col-lg-9" id="content">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <a [routerLink]="['./new']" class="btn btn-success">
+<div class="col-md-12" id="">
+    <!--<div class="panel panel-default">
+        <div class="panel-heading">-->
+            <a [routerLink]="['./new']" class="btn">
                 <i class="fa fa-plus" aria-hidden="true"></i>
             </a>
             <span class="title">
                 {{ActionTitle}}
             </span>
-        </div>
-        <div class="panel-body">
+        <!--</div>-->
+        <!--<div class="panel-body">-->
             <div class="alert alert-success" role="alert" *ngIf="successMessage">
                 {{successMessage}}
             </div>
@@ -37,7 +37,7 @@
                             <i *ngIf="PropType.active == Active" 
                                 style="cursor:pointer"
                                 (click)="Deactivate(PropType.id)"
-                                class="fa fa-eye" aria-hidden="true">
+                                class="fa fa-check" aria-hidden="true">
                             </i>
                             <i *ngIf="PropType.active == !Active" 
                                 style="cursor:pointer"
@@ -47,22 +47,22 @@
                         </td>
                         <td>
                             <a [routerLink]="['./edit/',PropType.id]" 
-                                class="btn btn-success">
+                                class="btn">
                             <i class="fa fa-pencil" aria-hidden="true"></i>
                             </a>
 
                             <a [routerLink]="['./',PropType.id]" 
-                                class="btn btn-warning">
+                                class="btn">
                             <i class="fa fa-eye" aria-hidden="true"></i>
                             </a>
                             
-                            <button class="btn btn-danger">
+                            <a class="btn">
                                 <i class="fa fa-trash" aria-hidden="true"></i>
-                            </button>
+                            </a>
                         </td>
                     </tr>
                 </tbody>
             </table>
-        </div>
-    </div>
+        <!--</div>
+    </div>-->
 </div>

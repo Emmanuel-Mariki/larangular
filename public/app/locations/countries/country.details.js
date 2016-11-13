@@ -1,6 +1,5 @@
-System.register(['@angular/core', '@angular/router', "@angular/forms", './country', './country.service'], function(exports_1, context_1) {
+System.register(["@angular/core", "@angular/router", "@angular/forms", "./country", "./country.service"], function (exports_1, context_1) {
     "use strict";
-    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10,10 +9,10 @@ System.register(['@angular/core', '@angular/router', "@angular/forms", './countr
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, forms_1, country_1, country_service_1;
-    var CountryDetailsComponent;
+    var __moduleName = context_1 && context_1.id;
+    var core_1, router_1, forms_1, country_1, country_service_1, CountryDetailsComponent;
     return {
-        setters:[
+        setters: [
             function (core_1_1) {
                 core_1 = core_1_1;
             },
@@ -28,8 +27,12 @@ System.register(['@angular/core', '@angular/router', "@angular/forms", './countr
             },
             function (country_service_1_1) {
                 country_service_1 = country_service_1_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
+            /**
+            * name
+            */
             CountryDetailsComponent = (function () {
                 function CountryDetailsComponent(router, route, fomBuilder, CountryService) {
                     this.router = router;
@@ -166,17 +169,20 @@ System.register(['@angular/core', '@angular/router', "@angular/forms", './countr
                         this.formFields[ElementId] = clicked;
                     }
                 };
-                CountryDetailsComponent = __decorate([
-                    core_1.Component({
-                        selector: 'country-details',
-                        templateUrl: './larangular/resources/assets/typescript/locations/countries/country.details.html',
-                        styles: ["\n        .panel-default>.panel-heading>.title\n        {\n            color: #663663;\n            font-family: Arial, Helvetica, sans-serif;\n            font-size: 200%;\n        }\n        .panel-default>.panel-heading>.btn\n        {\n            position: relative;\n            top: -5px;\n            margin-left:5px;\n        }\n         .panel-default>.panel-body>form>.row>.col-md-12\n        {\n            padding:20px;\n            border-bottom:1px solid #d3e0e9;\n        }\n         .panel-default>.panel-body>form>.row>.col-md-12>.row>.col-md-3\n        {\n                color: #898;\n        }        \n    "]
-                    }), 
-                    __metadata('design:paramtypes', [router_1.Router, router_1.ActivatedRoute, forms_1.FormBuilder, country_service_1.CountryService])
-                ], CountryDetailsComponent);
                 return CountryDetailsComponent;
             }());
+            CountryDetailsComponent = __decorate([
+                core_1.Component({
+                    selector: 'country-details',
+                    templateUrl: './larangular/resources/assets/typescript/locations/countries/country.details.html',
+                    styles: ["\n        .panel-default>.panel-heading>.title\n        {\n            color: #663663;\n            font-family: Arial, Helvetica, sans-serif;\n            font-size: 200%;\n        }\n        .panel-default>.panel-heading>.btn\n        {\n            position: relative;\n            top: -5px;\n            margin-left:5px;\n        }\n         .panel-default>.panel-body>form>.row>.col-md-12\n        {\n            padding:20px;\n            border-bottom:1px solid #d3e0e9;\n        }\n         .panel-default>.panel-body>form>.row>.col-md-12>.row>.col-md-3\n        {\n                color: #898;\n        }        \n    "]
+                }),
+                __metadata("design:paramtypes", [router_1.Router,
+                    router_1.ActivatedRoute,
+                    forms_1.FormBuilder,
+                    country_service_1.CountryService])
+            ], CountryDetailsComponent);
             exports_1("CountryDetailsComponent", CountryDetailsComponent);
         }
-    }
+    };
 });
