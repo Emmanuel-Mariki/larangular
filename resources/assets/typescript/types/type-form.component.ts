@@ -1,7 +1,6 @@
-import {Component, OnInit,Input,Output,EventEmitter} from "@angular/core";
+import {Component, OnInit,EventEmitter} from "@angular/core";
 import {FormGroup, FormControl,Validators, 
         FormBuilder,FormGroupDirective }from "@angular/forms";
-import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { TypeService }         from './type.service';
 import { PropertyTypes } from './type';
@@ -40,40 +39,45 @@ import { PropertyTypes } from './type';
         input[type=submit]{
             color: #fff;
         }
-        .has-error{    border-color: #a94442;}
-    `]
+        .has-error{border-color: #a94442;}
+        .btn{margin-top:15px; margin-bottom:15px;}
+    `],
+    inputs:['TypeViewMode','IDPROPTYP','types'],
+    outputs:['viewChanged','NoficationMsg']
 })
 
 export class TypeFormComponent implements OnInit{
 
-    private errorMessage: string;
+    private IDPROPTYP:number;
 
-    private successMessage: string;
+    private ActionTitle:string
+
+    private TypeViewMode:string;
+
+    private errorMessage: string;
 
     private PropertyTypeForm:FormGroup;
 
-    @Input() types:any = new PropertyTypes();
+    private types:any = new PropertyTypes();
 
-    @Output() newPropTypes = new EventEmitter();
+    viewChanged = new EventEmitter<string>();
 
-    private ActionTitle:string = 'New property type list';
+    NoficationMsg = new EventEmitter<string>();
 
     constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-    private _fomBuilder:FormBuilder,
-    private _Service: TypeService){}
+        private _fomBuilder:FormBuilder,
+        private TypeService: TypeService
+    ){}
 
-    private id:number = +this.route.snapshot.params['id'];
 
     ngOnInit()
     { 
+        if(this.TypeViewMode =='new')
+            this.ActionTitle  = 'Add new property type';
+        this.ActionTitle      = 'Edit property type';
         this._buildForm(); 
-        if(this.id)
-        {
-            this.ActionTitle = 'Edit property type list';
-            this.showPropType();
-        }
+        console.log(this.TypeViewMode);
+      
     }
 
     private _buildForm(): void 
@@ -112,27 +116,28 @@ export class TypeFormComponent implements OnInit{
 
     onSubmit()
     {
-        if(!this.id)
+        if(this.TypeViewMode =='new')
         {
             this.newPropType();
         }
         else
         {
-            this.putPropType();
+            this. putPropType();
         }
+       
     }
 
     //add property type
     newPropType()
     {
         if (!this.PropertyTypeForm) { return; }
-        this._Service.postPropType(this.PropertyTypeForm.value)
+        this.TypeService.postPropType(this.PropertyTypeForm.value)
             .subscribe(
                 types => this.types = types,
                 error =>  this.errorMessage = <any>error,
                 ()=>{
-                    this.successMessage = 'Property type created successfuly';
-                    this.router.navigate(['../larangular/dashboard/property-types']);
+                     this.NoficationMsg.emit('Property type created successfuly')
+                     this.viewChanged.emit('list')
                 }
             );
     }
@@ -140,27 +145,26 @@ export class TypeFormComponent implements OnInit{
     //update property type
     putPropType()
     {
-        this._Service.putPropType(this.id,this.PropertyTypeForm.value)
+        this.TypeService.putPropType(this.IDPROPTYP,this.PropertyTypeForm.value)
             .subscribe(
                 types => this.types = types,
                 error =>  this.errorMessage = <any>error,  
                 ()=>{
-                    this.newPropTypes.emit(this.types);
-                    this.successMessage = 'Property type updated successfuly';
-                    this.router.navigate(['../larangular/dashboard/property-types']);
+                     this.NoficationMsg.emit('Property type updated successfuly')
+                     this.viewChanged.emit('list')
                 }
             );
     }
 
     //show property type
-    showPropType()
-    {
-        this._Service.getPropType(this.id)
-            .subscribe(
-                types => this.types = types,
-                error =>  this.errorMessage = <any>error  
-            );
-    }
+    // showPropType()
+    // {
+    //     this._Service.getPropType(this.id)
+    //         .subscribe(
+    //             types => this.types = types,
+    //             error =>  this.errorMessage = <any>error  
+    //         );
+    // }
 
     onValueChanged(data?: any) 
     {
@@ -245,6 +249,11 @@ export class TypeFormComponent implements OnInit{
             'maxlength':    'Descriptions cannot be more than 150 characters long.',
         },
     };
+
+    ChangeView(event)
+    {
+        this.viewChanged.emit(event)
+    }
 
 
 }

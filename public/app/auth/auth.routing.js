@@ -31,7 +31,7 @@ System.register(["@angular/router", "./auth.component", "./register/register", "
                             component: forgot_pass_1.ForgotPassComponent
                         },
                         {
-                            path: 'join',
+                            path: 'register',
                             component: register_1.RegisterComponent
                         },
                     ]

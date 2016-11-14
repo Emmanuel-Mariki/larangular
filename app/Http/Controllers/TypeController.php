@@ -116,6 +116,15 @@ class TypeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if(Type::where('id',$id)->delete())
+        {
+            return response()
+            ->json(['success'=>'Property type deleted successfuly']);
+        }
+        else
+        {
+           return response()
+           ->json(['error'=>'Property type deletion failed']);
+        }
     }
 }

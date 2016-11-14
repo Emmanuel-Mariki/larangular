@@ -1,5 +1,4 @@
 import {Component,Input,Output,EventEmitter,OnInit} from "@angular/core";
-import { Router, ActivatedRoute, Params } from '@angular/router';
 import {FormGroup, FormControl,Validators, 
         FormBuilder,FormGroupDirective }from "@angular/forms";
 
@@ -10,340 +9,374 @@ import { PropertyTypes } from './type';
 @Component({
     selector:'property-type-view',
     template:`
-    <div class="col-lg-9" id="content">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <a [routerLink]="['../']" 
-                    class="btn btn-success">
-                   <i class="fa fa-list" aria-hidden="true"></i>
-                </a>
-                <span class="title">
-                    {{PropType.name }} Details
-                </span>
-            </div>
-            <div class="panel-body">
-            <div class="alert alert-success" role="alert" *ngIf="successMessage">
-                {{successMessage}}
-            </div>
-            <div class="alert alert-warning" role="alert" *ngIf="errorMessage">
-                {{errorMessage}}
-            </div>
-            <form [formGroup]="PropertyTypeForm"  (ngSubmit)="onSubmit(PropertyTypeForm.value)" novalidate >
-               <div class="row">
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-3">URL:</div>
-                            <div class="col-md-8"  *ngIf="formFields.url =='url'">
-                                {{PropType.url}} 
-                            </div>
-                            <div class="col-md-1">
-                                <i class="fa fa-pencil btn btn-success" 
-                                   (click)="setButtonClicked('','url')"
-                                  *ngIf="formFields.url =='url'"
-                                   aria-hidden="true">
-                                </i>
-                                <button type="submit" class="btn btn-success"
-                                    *ngIf="formFields.url ==''" 
-                                    (click)="setButtonClicked('url','url'); 
-                                    onSubmit({url:PropType.url})">
-                                    <i class="fa fa-floppy-o" aria-hidden="true">
-                                    </i>
-                                </button>
-                            </div>
-                            <div class="form-group col-md-8 url-form" 
-                                *ngIf="formFields.url ==''"
-                                [ngClass]="{'has-error':formErrors.url, 
-                                'has-success':PropertyTypeForm.controls['url'].valid}">
-                                <input type="text" formControlName="url" 
-                                [(ngModel)] ="PropType.url"
-                                class="form-control" id="url"/>
-                                <span *ngIf="formErrors.url" class="help-block error">
-                                    {{ formErrors.url }}
-                                </span>
-                            </div>
+    <div class="col-md-12" id="">
+        <a class="btn" (click)="ChangeView('list')">
+            <i class="fa fa-list" aria-hidden="true"></i>
+        </a>
+        <span class="title">
+            {{type.name }} Details
+        </span>
+        <div class="alert alert-success" role="alert" *ngIf="successMessage">
+            {{successMessage}}
+        </div>
+        <div class="alert alert-warning" role="alert" *ngIf="errorMessage">
+            {{errorMessage}}
+        </div>
+        <form [formGroup]="PropertyTypeForm"  (ngSubmit)="onSubmit(PropertyTypeForm.value)" novalidate >
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-3">URL:</div>
+                        <div class="col-md-8"  *ngIf="formFields.url =='url'">
+                            {{type.url}} 
                         </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-3">Title:</div>
-                            <div class="col-md-8" *ngIf="formFields.title =='title'">
-                                {{PropType.title}} 
-                            </div>
-                            <div class="col-md-1">
-                                <i class="fa fa-pencil btn btn-success" 
-                                   (click)="setButtonClicked('','title')"
-                                  *ngIf="formFields.title =='title'"
-                                   aria-hidden="true">
+                        <div class="col-md-1">
+                            <i class="fa fa-pencil btn" 
+                                (click)="setButtonClicked('','url')"
+                                *ngIf="formFields.url =='url'"
+                                aria-hidden="true">
+                            </i>
+                            <button type="submit" class="btn"
+                                *ngIf="formFields.url ==''" 
+                                (click)="setButtonClicked('url','url'); 
+                                onSubmit({url:type.url})">
+                                <i class="fa fa-floppy-o" aria-hidden="true">
                                 </i>
-                                <button type="submit" class="btn btn-success"
-                                    *ngIf="formFields.title ==''"
-                                    (click)="setButtonClicked('title','title'); 
-                                    onSubmit({title:PropType.title})">
-                                    <i class="fa fa-floppy-o" aria-hidden="true">
-                                    </i>
-                                </button>
-                            </div>
-                            <div class="form-group col-md-8"
-                                *ngIf="formFields.title ==''"
-                                [ngClass]="{'has-error':formErrors.title, 
-                                'has-success':PropertyTypeForm.controls['title'].valid}">
-                                <input type="text" formControlName="title" value="PropType.title"
-                                [(ngModel)] ="PropType.title" 
-                                class="form-control" id="title"/>
-                                <span *ngIf="formErrors.title" class="help-block error">
-                                    {{ formErrors.title }}
-                                </span>
-                            </div>
+                            </button>
                         </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-3">Name:</div>
-                            <div class="col-md-8" *ngIf="formFields.name =='name'">
-                                {{PropType.name}} 
-                            </div>
-                            <div class="col-md-1">
-                                <i class="fa fa-pencil btn btn-success" 
-                                   (click)="setButtonClicked('','name')"
-                                  *ngIf="formFields.name =='name'"
-                                   aria-hidden="true">
-                                </i>
-                                <button type="submit" class="btn btn-success"
-                                    *ngIf="formFields.name ==''"
-                                    (click)="setButtonClicked('name','name'); 
-                                    onSubmit({name:PropType.name})">
-                                    <i class="fa fa-floppy-o" aria-hidden="true">
-                                    </i>
-                                </button>
-                            </div>
-                            <div class="form-group col-md-8" *ngIf="formFields.name ==''"
-                                [ngClass]="{'has-error':formErrors.name, 
-                                'has-success':PropertyTypeForm.controls['name'].valid}">
-                                <input type="text" formControlName="name" 
-                                [(ngModel)] ="PropType.name"
-                                class="form-control" id="name"/>
-                                <span *ngIf="formErrors.name" class="help-block error">
-                                    {{ formErrors.name }}
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-3">Active:</div>
-                            <div class="col-md-8" [hidden]="visible">
-                                <span *ngIf="PropType.active == Active"> Yes</span>
-                                <span *ngIf="PropType.active == !Active"> No</span>
-                            </div>
-                            <div class="col-md-1">
-                                <i *ngIf="PropType.active == Active" 
-                                    style="cursor:pointer"
-                                    (click)="Deactivate(PropType.id)"
-                                    class="fa fa-eye" aria-hidden="true">
-                                </i>
-                                <i *ngIf="PropType.active == !Active" 
-                                    style="cursor:pointer"
-                                    (click)="Activate(PropType.id)"
-                                    class="fa fa-remove" aria-hidden="true">
-                                </i>
-                            </div>
-                            <div class="form-group col-md-8" [hidden]="!visible"
-                                [ngClass]="{'has-error':formErrors.active, 
-                                'has-success':PropertyTypeForm.controls['active'].valid}">
-                                <input type="number" formControlName="active" 
-                                [(ngModel)] ="PropType.active"
-                                class="form-control disabled" id="active"/>
-                                <span *ngIf="formErrors.active" class="help-block error">
-                                    {{ formErrors.active }}
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-3">Priority:</div>
-                            <div class="col-md-8" *ngIf="formFields.priority == 'priority'">
-                                {{PropType.priority}} 
-                            </div>
-                            <div class="col-md-1">
-                                <i class="fa fa-pencil btn btn-success" 
-                                   (click)="setButtonClicked('','priority')"
-                                  *ngIf="formFields.priority =='priority'"
-                                   aria-hidden="true">
-                                </i>
-                                <button type="submit" class="btn btn-success"
-                                    *ngIf="formFields.priority ==''"
-                                    (click)="setButtonClicked('priority','priority'); 
-                                    onSubmit({priority:PropType.priority})">
-                                    <i class="fa fa-floppy-o" aria-hidden="true">
-                                    </i>
-                                </button>
-                            </div>
-                            <div class="form-group col-md-8" *ngIf="formFields.priority == ''"
-                                [ngClass]="{'has-error':formErrors.priority, 
-                                'has-success':PropertyTypeForm.controls['priority'].valid}">
-                                <input type="number" formControlName="priority" 
-                                [(ngModel)] ="PropType.priority"
-                                class="form-control" id="priority"/>
-                                <span *ngIf="formErrors.priority" class="help-block error">
-                                    {{ formErrors.priority }}
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-3">Created:</div>
-                            <div class="col-md-9">
-                                {{PropType.created_at | date}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-3">Updated:</div>
-                            <div class="col-md-9">
-                                {{PropType.updated_at | date}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-3">Keywords:</div>
-                            <div class="col-md-8" *ngIf="formFields.keywords == 'keywords'">
-                                {{PropType.keywords}} 
-                            </div>
-                            <div class="col-md-1">
-                                <i class="fa fa-pencil btn btn-success" 
-                                   (click)="setButtonClicked('','keywords')"
-                                  *ngIf="formFields.keywords =='keywords'"
-                                   aria-hidden="true">
-                                </i>
-                                <button type="submit" class="btn btn-success"
-                                    *ngIf="formFields.keywords ==''"
-                                    (click)="setButtonClicked('keywords','keywords'); 
-                                    onSubmit({keywords:PropType.keywords})">
-                                    <i class="fa fa-floppy-o" aria-hidden="true">
-                                    </i>
-                                </button>
-                            </div>
-                            <div class="form-group col-md-8" *ngIf="formFields.keywords == ''"
-                                [ngClass]="{'has-error':formErrors.keywords, 
-                                'has-success':PropertyTypeForm.controls['keywords'].valid}">
-                                <input type="text" formControlName="keywords" 
-                                [(ngModel)] ="PropType.keywords"
-                                class="form-control" id="keywords"/>
-                                <span *ngIf="formErrors.keywords" class="help-block error">
-                                    {{ formErrors.keywords }}
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-3" *ngIf="formFields.descriptions == 'descriptions'">
-                            Descriptions:</div>
-                            <div class="col-md-8" *ngIf="formFields.descriptions == 'descriptions'">
-                                {{PropType.descriptions}}
-                            </div>
-                            <div class="col-md-1">
-                                <i class="fa fa-pencil btn btn-success" 
-                                   (click)="setButtonClicked('','descriptions')"
-                                  *ngIf="formFields.descriptions =='descriptions'"
-                                   aria-hidden="true">
-                                </i>
-                                <button type="submit" class="btn btn-success"
-                                    *ngIf="formFields.descriptions ==''"
-                                    (click)="setButtonClicked('descriptions','descriptions'); 
-                                    onSubmit({descriptions:PropType.descriptions})">
-                                    <i class="fa fa-floppy-o" aria-hidden="true">
-                                    </i>
-                                </button>
-                            </div>
-                            <div class="form-group col-md-11"*ngIf="formFields.descriptions == ''"
-                            [ngClass]="{'has-error':formErrors.descriptions, 
-                            'has-success':PropertyTypeForm.controls['descriptions'].valid}">
-                                <textarea class="form-control" id="descriptions" cols="10"
-                                formControlName="descriptions"
-                                [(ngModel)] ="PropType.descriptions"></textarea>
-                                <span *ngIf="formErrors.descriptions" class="help-block error">
-                                    {{ formErrors.descriptions }}
-                                </span>
-                            </div>
+                        <div class="form-group col-md-8 url-form" 
+                            *ngIf="formFields.url ==''"
+                            [ngClass]="{'has-error':formErrors.url, 
+                            'has-success':PropertyTypeForm.controls['url'].valid}">
+                            <input type="text" formControlName="url" 
+                            [(ngModel)] ="type.url"
+                            class="form-control" id="url"/>
+                            <span *ngIf="formErrors.url" class="help-block error">
+                                {{ formErrors.url }}
+                            </span>
                         </div>
                     </div>
                 </div>
-            </form>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-3">Title:</div>
+                        <div class="col-md-8" *ngIf="formFields.title =='title'">
+                            {{type.title}} 
+                        </div>
+                        <div class="col-md-1">
+                            <i class="fa fa-pencil btn" 
+                                (click)="setButtonClicked('','title')"
+                                *ngIf="formFields.title =='title'"
+                                aria-hidden="true">
+                            </i>
+                            <button type="submit" class="btn"
+                                *ngIf="formFields.title ==''"
+                                (click)="setButtonClicked('title','title'); 
+                                onSubmit({title:type.title})">
+                                <i class="fa fa-floppy-o" aria-hidden="true">
+                                </i>
+                            </button>
+                        </div>
+                        <div class="form-group col-md-8"
+                            *ngIf="formFields.title ==''"
+                            [ngClass]="{'has-error':formErrors.title, 
+                            'has-success':PropertyTypeForm.controls['title'].valid}">
+                            <input type="text" formControlName="title" value="type.title"
+                            [(ngModel)] ="type.title" 
+                            class="form-control" id="title"/>
+                            <span *ngIf="formErrors.title" class="help-block error">
+                                {{ formErrors.title }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-3">Name:</div>
+                        <div class="col-md-8" *ngIf="formFields.name =='name'">
+                            {{type.name}} 
+                        </div>
+                        <div class="col-md-1">
+                            <i class="fa fa-pencil btn" 
+                                (click)="setButtonClicked('','name')"
+                                *ngIf="formFields.name =='name'"
+                                aria-hidden="true">
+                            </i>
+                            <button type="submit" class="btn"
+                                *ngIf="formFields.name ==''"
+                                (click)="setButtonClicked('name','name'); 
+                                onSubmit({name:type.name})">
+                                <i class="fa fa-floppy-o" aria-hidden="true">
+                                </i>
+                            </button>
+                        </div>
+                        <div class="form-group col-md-8" *ngIf="formFields.name ==''"
+                            [ngClass]="{'has-error':formErrors.name, 
+                            'has-success':PropertyTypeForm.controls['name'].valid}">
+                            <input type="text" formControlName="name" 
+                            [(ngModel)] ="type.name"
+                            class="form-control" id="name"/>
+                            <span *ngIf="formErrors.name" class="help-block error">
+                                {{ formErrors.name }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-3">Active:</div>
+                        <div class="col-md-8" [hidden]="visible">
+                            <span *ngIf="type.active == '1'"> Yes</span>
+                            <span *ngIf="type.active == '0'"> No</span>
+                        </div>
+                        <div class="col-md-1">
+                            <i *ngIf="type.active == '1'" 
+                                style="cursor:pointer"
+                                (click)="Deactivate(type.IDPROPTYP)"
+                                class="fa fa-check" aria-hidden="true">
+                            </i>
+                            <i *ngIf="type.active == '0'" 
+                                style="cursor:pointer"
+                                (click)="Activate(type.IDPROPTYP)"
+                                class="fa fa-remove" aria-hidden="true">
+                            </i>
+                        </div>
+                        <div class="form-group col-md-8" [hidden]="!visible"
+                            [ngClass]="{'has-error':formErrors.active, 
+                            'has-success':PropertyTypeForm.controls['active'].valid}">
+                            <input type="number" formControlName="active" 
+                            [(ngModel)] ="type.active"
+                            class="form-control disabled" id="active"/>
+                            <span *ngIf="formErrors.active" class="help-block error">
+                                {{ formErrors.active }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-3">Priority:</div>
+                        <div class="col-md-8" *ngIf="formFields.priority == 'priority'">
+                            {{type.priority}} 
+                        </div>
+                        <div class="col-md-1">
+                            <i class="fa fa-pencil btn" 
+                                (click)="setButtonClicked('','priority')"
+                                *ngIf="formFields.priority =='priority'"
+                                aria-hidden="true">
+                            </i>
+                            <button type="submit" class="btn"
+                                *ngIf="formFields.priority ==''"
+                                (click)="setButtonClicked('priority','priority'); 
+                                onSubmit({priority:type.priority})">
+                                <i class="fa fa-floppy-o" aria-hidden="true">
+                                </i>
+                            </button>
+                        </div>
+                        <div class="form-group col-md-8" *ngIf="formFields.priority == ''"
+                            [ngClass]="{'has-error':formErrors.priority, 
+                            'has-success':PropertyTypeForm.controls['priority'].valid}">
+                            <input type="number" formControlName="priority" 
+                            [(ngModel)] ="type.priority"
+                            class="form-control" id="priority"/>
+                            <span *ngIf="formErrors.priority" class="help-block error">
+                                {{ formErrors.priority }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-3">Created:</div>
+                        <div class="col-md-9">
+                            {{type.created_at | date}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-3">Updated:</div>
+                        <div class="col-md-9">
+                            {{type.updated_at | date}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-3">Keywords:</div>
+                        <div class="col-md-8" *ngIf="formFields.keywords == 'keywords'">
+                            {{type.keywords}} 
+                        </div>
+                        <div class="col-md-1">
+                            <i class="fa fa-pencil btn" 
+                                (click)="setButtonClicked('','keywords')"
+                                *ngIf="formFields.keywords =='keywords'"
+                                aria-hidden="true">
+                            </i>
+                            <button type="submit" class="btn"
+                                *ngIf="formFields.keywords ==''"
+                                (click)="setButtonClicked('keywords','keywords'); 
+                                onSubmit({keywords:type.keywords})">
+                                <i class="fa fa-floppy-o" aria-hidden="true">
+                                </i>
+                            </button>
+                        </div>
+                        <div class="form-group col-md-8" *ngIf="formFields.keywords == ''"
+                            [ngClass]="{'has-error':formErrors.keywords, 
+                            'has-success':PropertyTypeForm.controls['keywords'].valid}">
+                            <input type="text" formControlName="keywords" 
+                            [(ngModel)] ="type.keywords"
+                            class="form-control" id="keywords"/>
+                            <span *ngIf="formErrors.keywords" class="help-block error">
+                                {{ formErrors.keywords }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-3" *ngIf="formFields.descriptions == 'descriptions'">
+                        Descriptions:</div>
+                        <div class="col-md-8" *ngIf="formFields.descriptions == 'descriptions'">
+                            {{type.descriptions}}
+                        </div>
+                        <div class="col-md-1">
+                            <i class="fa fa-pencil btn" 
+                                (click)="setButtonClicked('','descriptions')"
+                                *ngIf="formFields.descriptions =='descriptions'"
+                                aria-hidden="true">
+                            </i>
+                            <button type="submit" class="btn"
+                                *ngIf="formFields.descriptions ==''"
+                                (click)="setButtonClicked('descriptions','descriptions'); 
+                                onSubmit({descriptions:type.descriptions})">
+                                <i class="fa fa-floppy-o" aria-hidden="true">
+                                </i>
+                            </button>
+                        </div>
+                        <div class="form-group col-md-11"*ngIf="formFields.descriptions == ''"
+                        [ngClass]="{'has-error':formErrors.descriptions, 
+                        'has-success':PropertyTypeForm.controls['descriptions'].valid}">
+                            <textarea class="form-control" id="descriptions" cols="10"
+                            formControlName="descriptions"
+                            [(ngModel)] ="type.descriptions"></textarea>
+                            <span *ngIf="formErrors.descriptions" class="help-block error">
+                                {{ formErrors.descriptions }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
     `,
     styles:[`
-         .panel-default>.panel-body>form>.row>.col-md-12
-        {
-            padding:20px;
-            border-bottom:1px solid #d3e0e9;
+        input[type=text].ng-valid,
+        select.ng-valid,
+        input[type=number].ng-valid,
+        textarea.ng-valid{
+            border-width: 2px;
+            background-color: #FAFFBD;
         }
-         .panel-default>.panel-body>form>.row>.col-md-12>.row>.col-md-3
-        {
-                color: #898;
+
+        input[type=text],input[type=number],select{
+            height: 45px;
+            font-size: 110%;
         }
-        
-        
-    `]
+        textarea{
+            min-height: 150px!important;
+            font-size: 110%;
+            max-width: 100% !important;
+        }
+        label
+        {
+            color: #898;
+            font-size: 120%
+        }
+        .error
+        {
+            color: #a94442;
+            font-size: 105%;
+        }
+        input[type=submit]{
+            color: #fff;
+        }
+        .has-error{border-color: #a94442;}
+        .btn{margin-top:15px; margin-bottom:15px;}
+        form
+        {
+            margin-left:15px;
+            margin-right:15px;
+        }
+        .col-md-12
+        {
+            border-top: 1px solid;
+            border-color: #DCDCDC;
+            padding-top:10px;
+            padding-bottom:10px;
+        }
+    `],
+    inputs:['type','IDPROPTYP'],
+    outputs:['viewChanged']
 })
 
 export class TypeViewComponent implements OnInit{
 
-    constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private _fomBuilder:FormBuilder,
-    private service: TypeService) {}
+    private type:any;
 
-    private Active:boolean = true;
+    private IDPROPTYP:number;
+
+    constructor(
+        private _fomBuilder:FormBuilder,
+        private TypeService: TypeService
+    ) {}
+
+    // private Active:boolean = true;
 
     private errorMessage: string;
 
     private successMessage:string;
 
-    @Input() visible: boolean = false;
+    viewChanged = new EventEmitter<string>();
+
+    // @Input() visible: boolean = false;
 
     private PropertyTypeForm:FormGroup;
     
     private PropType: any = new PropertyTypes();
 
-    private id:number = +this.route.snapshot.params['id'];
-
 
     ngOnInit()
     { 
         this._buildForm(); 
-        this.showPropType();
+        //this.showPropType();
+    }
+
+    ChangeView(event)
+    {
+        this.viewChanged.emit(event);
+        console.log(event);
     }
 
     onSubmit(body)
     {
-        this.service.putPropType(this.id,body)
+        this.TypeService.putPropType(this.IDPROPTYP,body)
             .subscribe(
                 PropType => this.showPropType(),
                 error =>  this.errorMessage = <any>error,  
                 ()=>{
-                    this.successMessage = 'Property type updated successfuly';
-                    this.router.navigate(['../larangular/dashboard/property-types',this.id]);
                 }
             );
     }
 
-    private showPropType()
-    {
-        let id = +this.route.snapshot.params['id'];
-        this.service.getPropType(id)
-            .subscribe(
-                PropType => this.PropType = PropType,
-                error =>  this.errorMessage = <any>error  
-            );
-    }
+    // private showPropType()
+    // {
+    //     this.TypeService.getPropType(id)
+    //         .subscribe(
+    //             PropType => this.PropType = PropType,
+    //             error =>  this.errorMessage = <any>error  
+    //         );
+    // }
     private _buildForm(): void 
     {
         this.PropertyTypeForm = this._fomBuilder.group({
@@ -462,14 +495,14 @@ export class TypeViewComponent implements OnInit{
         },
     }
 
-    @Output() open: EventEmitter<any> = new EventEmitter();
-    @Output() close: EventEmitter<any> = new EventEmitter();
+    // @Output() open: EventEmitter<any> = new EventEmitter();
+    // @Output() close: EventEmitter<any> = new EventEmitter();
 
     Deactivate(id)
     {
         let body = {'active':'0'};
 
-        this.service.putPropType(id,body)
+        this.TypeService.putPropType(id,body)
             .subscribe(
                 PropTypes =>this.showPropType(),
                 error =>  this.errorMessage = <any>error,  
@@ -483,7 +516,7 @@ export class TypeViewComponent implements OnInit{
     {
         let body = {'active':'1'};
 
-        this.service.putPropType(id,body)
+        this.TypeService.putPropType(id,body)
             .subscribe(
                 PropTypes =>this.showPropType(),
                 error =>  this.errorMessage = <any>error,  

@@ -20,7 +20,7 @@ const AuthRoutes: Routes = [
             component:ForgotPassComponent
         },
         {
-            path:'join',
+            path:'register',
             component:RegisterComponent
         },
       ]

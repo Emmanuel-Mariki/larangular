@@ -20,31 +20,30 @@ System.register(["@angular/core"], function (exports_1, context_1) {
         execute: function () {
             TypeComponent = (function () {
                 function TypeComponent() {
-                    this.ActionTitle = 'Type list';
-                    // @Output() open: EventEmitter<any> = new EventEmitter();
-                    // @Output() close: EventEmitter<any> = new EventEmitter();
-                    // toggle() 
-                    // {
-                    //     this.visible = !this.visible;
-                    //     if (this.visible) 
-                    //     {
-                    //         this.ActionTitle ='Add property types'
-                    //         this.open.emit({newValue:this.visible});
-                    //     } 
-                    //     else 
-                    //     {
-                    //         this.ActionTitle = 'Type list';
-                    //         this.close.emit({newValue:this.visible});
-                    //     }
-                    // }
                 }
+                TypeComponent.prototype.ngOnInit = function () {
+                    this.view = 'list';
+                };
+                TypeComponent.prototype.changeView = function (event) {
+                    this.view = event;
+                };
+                TypeComponent.prototype.Notify = function (event) {
+                    this.successMessage = event;
+                };
+                TypeComponent.prototype.getId = function (event) {
+                    this.id = event;
+                    console.log(this.id);
+                };
+                TypeComponent.prototype.getProperty = function (event) {
+                    this.Type = event;
+                };
                 return TypeComponent;
             }());
             TypeComponent = __decorate([
                 core_1.Component({
                     selector: 'property-type',
-                    template: "\n        <property-type-list></property-type-list>\n    ",
-                    styles: ["\n        .panel-default>.panel-heading>.title\n        {\n            color: #663663;\n            font-family: Arial, Helvetica, sans-serif;\n            font-size: 200%;\n        }\n        .panel-default>.panel-heading>.btn\n        {\n            position: relative;\n            top: -5px;\n            margin-left:5px;\n        }\n    "]
+                    template: "\n        <property-type-list *ngIf=\"view =='list'\"\n                            (viewChanged)=\"changeView($event)\"\n                            (Id)=\"getId($event)\"\n                            (Type)=\"getProperty($event)\">\n        </property-type-list>\n        <property-type-form *ngIf=\"view =='new'\" \n                            (viewChanged)=\"changeView($event)\" \n                            (NoficationMsg)=\"Notify($event)\"\n                            [TypeViewMode] =\"view\">\n        </property-type-form>\n        <property-type-form *ngIf=\"view =='edit'\" \n                            (viewChanged)=\"changeView($event)\" \n                            (NoficationMsg)=\"Notify($event)\"\n                            [IDPROPTYP]=\"id\" [types]=\"Type\"\n                            [TypeViewMode] =\"view\">\n        </property-type-form>\n        <property-type-view *ngIf=\"view =='detail'\"\n                            (viewChanged)=\"changeView($event)\" \n                            [IDPROPTYP]=\"id\" [type]=\"Type\">\n        </property-type-view>\n    ",
+                    styles: ["\n\n    "]
                 }),
                 __metadata("design:paramtypes", [])
             ], TypeComponent);

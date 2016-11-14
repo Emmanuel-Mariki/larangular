@@ -4,8 +4,6 @@ import { FormsModule,ReactiveFormsModule }from '@angular/forms';
 
 import {TypeRouting, PropertyTypeRouteProviders }  from './type.routing'
 
-//import {PropertyTypes} from "./type";
-//import {TypeService} from "./type.service";
 import {TypeComponent} from "./type.component";
 import {TypeListComponent} from "./type-list.component"
 import {TypeFormComponent} from "./type-form.component";

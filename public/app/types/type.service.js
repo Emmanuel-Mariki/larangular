@@ -72,6 +72,12 @@ System.register(["@angular/core", "@angular/http", "rxjs/Observable", "rxjs/add/
                         .map(this.ExctractData)
                         .catch(this.ThrowError);
                 };
+                TypeService.prototype.destroyPropType = function (id) {
+                    var options = new http_1.RequestOptions({ headers: this.headers });
+                    return this.http.delete(this.TypeUrl + '/' + id, options)
+                        .map(this.ExctractData)
+                        .catch(this.ThrowError);
+                };
                 return TypeService;
             }());
             TypeService = __decorate([

@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use Validator;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
+
 
 class RegisterController extends Controller
 {
@@ -47,11 +50,23 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'name' => 'required|max:255',
+        $data = $data['Register'];
+        $validator = Validator::make($data, [
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
+
+        if($validator->fails())
+        {
+            $errors = $validator->errors()->all()[0];
+            //dd($errors);
+
+            return response()->json(['errors'=>$errors]);
+        }
+        else
+        {
+            return $validator;
+        }
     }
 
     /**
@@ -62,10 +77,15 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
+
+        $data = $data['Register'];
+        //dd($data);
+        User::create([
+            //'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+
+        return response()->json(['success' => $data['email']], 200);
     }
 }

@@ -1,126 +1,116 @@
-<div class="col-lg-9" id="content">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <a [routerLink]="['../../']" class="btn btn-success" *ngIf="id">
-                <i class="fa fa-list" aria-hidden="true"></i>
-            </a>
-            <a [routerLink]="['../']" class="btn btn-success" *ngIf="!id">
-                <i class="fa fa-list" aria-hidden="true"></i>
-            </a>
-            <span class="title">
-                {{ActionTitle}}
-            </span>
-        </div>
-        <div class="panel-body" *ngIf="types">
-            <div class="alert alert-success" role="alert" *ngIf="successMessage">
-                {{successMessage}}
+<a  class="btn" (click)="ChangeView('list')">
+    <i class="fa fa-list" aria-hidden="true"></i>
+</a>
+<span class="title">
+    {{ActionTitle}}
+</span>
+<div class="alert alert-success" role="alert" *ngIf="successMessage">
+    {{successMessage}}
+</div>
+<div class="col-md-12">
+    <form [formGroup]="PropertyTypeForm"  (ngSubmit)="onSubmit(PropertyTypeForm.value)" novalidate >
+        <div class="row">
+            <div class="form-group col-md-9" 
+            [ngClass]="{'has-error':formErrors.name, 
+            'has-success':PropertyTypeForm.controls['name'].valid}">
+                <label class="control-label"  for="name">Property type name</label>
+                <input type="text" [(ngModel)] ="types.name" formControlName="name" 
+                class="form-control" id="name"/>
+                <span *ngIf="formErrors.name" class="help-block error">
+                    {{ formErrors.name }}
+                </span>
             </div>
-        <form [formGroup]="PropertyTypeForm"  (ngSubmit)="onSubmit(PropertyTypeForm.value)" novalidate >
-                <div class="row">
-                    <div class="form-group col-md-9" 
-                    [ngClass]="{'has-error':formErrors.name, 
-                    'has-success':PropertyTypeForm.controls['name'].valid}">
-                        <label class="control-label"  for="name">Property type name</label>
-                        <input type="text" [(ngModel)] ="types.name" formControlName="name" 
-                        class="form-control" id="name"/>
-                        <span *ngIf="formErrors.name" class="help-block error">
-                            {{ formErrors.name }}
-                        </span>
-                    </div>
-                    <div class="form-group col-md-3"
-                    [ngClass]="{'has-error':formErrors.priority, 
-                    'has-success':PropertyTypeForm.controls['priority'].valid}">
-                        <label class="control-label"  for="priority">Priority</label>
-                        <input type="number" formControlName="priority" 
-                        [(ngModel)] ="types.priority"
-                        class="form-control" id="priority"/>
-                        <span *ngIf="formErrors.priority" class="help-block error">
-                            {{ formErrors.priority }}
-                        </span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col-md-9"
-                    [ngClass]="{'has-error':formErrors.keywords, 
-                    'has-success':PropertyTypeForm.controls['keywords'].valid}">
-                        <label class="control-label"  for="keywords">Keywords [meta tags]</label>
-                        <input type="text" formControlName="keywords" 
-                        [(ngModel)] ="types.keywords"
-                        class="form-control" id="keywords"/>
-                        <span *ngIf="formErrors.keywords" class="help-block error">
-                            {{ formErrors.keywords }}
-                        </span>
-                    </div>
-                    <div class="form-group col-md-3"
-                    [ngClass]="{'has-error':formErrors.active, 
-                    'has-success':PropertyTypeForm.controls['active'].valid}">
-                        <label class="control-label"  for="active">Active</label>
-                        <select name="active" class="form-control" 
-                        formControlName="active"
-                        [(ngModel)] ="types.active">
-                        <option value=""></option>
-                        <option value="1">Yes</option>
-                        <option value="0">No</option>
-                        </select>
-                        <span *ngIf="formErrors.active" class="help-block error">
-                            {{ formErrors.active }}
-                        </span>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="form-group col-md-12"
-                    [ngClass]="{'has-error':formErrors.title, 
-                    'has-success':PropertyTypeForm.controls['title'].valid}">
-                        <label class="control-label"  for="title">Title [meta tags]</label>
-                        <input type="text" formControlName="title"
-                        [(ngModel)] ="types.title" 
-                        class="form-control" id="title"/>
-                        <span *ngIf="formErrors.title" class="help-block error">
-                            {{ formErrors.title }}
-                        </span>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="form-group col-md-12"
-                    [ngClass]="{'has-error':formErrors.url, 
-                    'has-success':PropertyTypeForm.controls['url'].valid}">
-                        <label class="control-label"  for="title">URL [meta tags]</label>
-                        <input type="text" formControlName="url" 
-                        [(ngModel)] ="types.url"
-                        class="form-control" id="url"/>
-                        <span *ngIf="formErrors.url" class="help-block error">
-                            {{ formErrors.url }}
-                        </span>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="form-group col-md-12"
-                    [ngClass]="{'has-error':formErrors.descriptions, 
-                    'has-success':PropertyTypeForm.controls['descriptions'].valid}">
-                        <label class="control-label"  for="descriptions">Descriptions [meta tags]</label>
-                        <textarea class="form-control" id="descriptions" cols="10"
-                        formControlName="descriptions"
-                        [(ngModel)] ="types.descriptions"></textarea>
-                        <span *ngIf="formErrors.descriptions" class="help-block error">
-                            {{ formErrors.descriptions }}
-                        </span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col-md-12">
-                        <input type="submit" value="Save" 
-                        [disabled]=!PropertyTypeForm.valid
-                        class="btn btn-lg btn-block btn-primary"/>
-                    </div>
-                </div>
-                <div class="row">
-                    {{PropertyTypeForm.name | json}}
-                </div>
-            </form>
-
+            <div class="form-group col-md-3"
+            [ngClass]="{'has-error':formErrors.priority, 
+            'has-success':PropertyTypeForm.controls['priority'].valid}">
+                <label class="control-label"  for="priority">Priority</label>
+                <input type="number" formControlName="priority" 
+                [(ngModel)] ="types.priority"
+                class="form-control" id="priority"/>
+                <span *ngIf="formErrors.priority" class="help-block error">
+                    {{ formErrors.priority }}
+                </span>
+            </div>
         </div>
-    </div>
+        <div class="row">
+            <div class="form-group col-md-9"
+            [ngClass]="{'has-error':formErrors.keywords, 
+            'has-success':PropertyTypeForm.controls['keywords'].valid}">
+                <label class="control-label"  for="keywords">Keywords [meta tags]</label>
+                <input type="text" formControlName="keywords" 
+                [(ngModel)] ="types.keywords"
+                class="form-control" id="keywords"/>
+                <span *ngIf="formErrors.keywords" class="help-block error">
+                    {{ formErrors.keywords }}
+                </span>
+            </div>
+            <div class="form-group col-md-3"
+            [ngClass]="{'has-error':formErrors.active, 
+            'has-success':PropertyTypeForm.controls['active'].valid}">
+                <label class="control-label"  for="active">Active</label>
+                <select name="active" class="form-control" 
+                formControlName="active"
+                [(ngModel)] ="types.active">
+                <option value=""></option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+                </select>
+                <span *ngIf="formErrors.active" class="help-block error">
+                    {{ formErrors.active }}
+                </span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-12"
+            [ngClass]="{'has-error':formErrors.title, 
+            'has-success':PropertyTypeForm.controls['title'].valid}">
+                <label class="control-label"  for="title">Title [meta tags]</label>
+                <input type="text" formControlName="title"
+                [(ngModel)] ="types.title" 
+                class="form-control" id="title"/>
+                <span *ngIf="formErrors.title" class="help-block error">
+                    {{ formErrors.title }}
+                </span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-12"
+            [ngClass]="{'has-error':formErrors.url, 
+            'has-success':PropertyTypeForm.controls['url'].valid}">
+                <label class="control-label"  for="title">URL [meta tags]</label>
+                <input type="text" formControlName="url" 
+                [(ngModel)] ="types.url"
+                class="form-control" id="url"/>
+                <span *ngIf="formErrors.url" class="help-block error">
+                    {{ formErrors.url }}
+                </span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-12"
+            [ngClass]="{'has-error':formErrors.descriptions, 
+            'has-success':PropertyTypeForm.controls['descriptions'].valid}">
+                <label class="control-label"  for="descriptions">Descriptions [meta tags]</label>
+                <textarea class="form-control" id="descriptions" cols="10"
+                formControlName="descriptions"
+                [(ngModel)] ="types.descriptions"></textarea>
+                <span *ngIf="formErrors.descriptions" class="help-block error">
+                    {{ formErrors.descriptions }}
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <input type="submit" value="Save" 
+                [disabled]=!PropertyTypeForm.valid
+                class="btn btn-lg btn-block btn-primary"/>
+            </div>
+        </div>
+        <div class="row">
+            {{PropertyTypeForm.name | json}}
+        </div>
+    </form>
 </div>

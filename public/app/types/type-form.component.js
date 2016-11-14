@@ -1,4 +1,4 @@
-System.register(["@angular/core", "@angular/forms", "@angular/router", "./type.service", "./type"], function (exports_1, context_1) {
+System.register(["@angular/core", "@angular/forms", "./type.service", "./type"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -10,7 +10,7 @@ System.register(["@angular/core", "@angular/forms", "@angular/router", "./type.s
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var __moduleName = context_1 && context_1.id;
-    var core_1, forms_1, router_1, type_service_1, type_1, TypeFormComponent;
+    var core_1, forms_1, type_service_1, type_1, TypeFormComponent;
     return {
         setters: [
             function (core_1_1) {
@@ -18,9 +18,6 @@ System.register(["@angular/core", "@angular/forms", "@angular/router", "./type.s
             },
             function (forms_1_1) {
                 forms_1 = forms_1_1;
-            },
-            function (router_1_1) {
-                router_1 = router_1_1;
             },
             function (type_service_1_1) {
                 type_service_1 = type_service_1_1;
@@ -31,15 +28,12 @@ System.register(["@angular/core", "@angular/forms", "@angular/router", "./type.s
         ],
         execute: function () {
             TypeFormComponent = (function () {
-                function TypeFormComponent(router, route, _fomBuilder, _Service) {
-                    this.router = router;
-                    this.route = route;
+                function TypeFormComponent(_fomBuilder, TypeService) {
                     this._fomBuilder = _fomBuilder;
-                    this._Service = _Service;
+                    this.TypeService = TypeService;
                     this.types = new type_1.PropertyTypes();
-                    this.newPropTypes = new core_1.EventEmitter();
-                    this.ActionTitle = 'New property type list';
-                    this.id = +this.route.snapshot.params['id'];
+                    this.viewChanged = new core_1.EventEmitter();
+                    this.NoficationMsg = new core_1.EventEmitter();
                     this.formErrors = {
                         'name': '',
                         'priority': '',
@@ -90,11 +84,11 @@ System.register(["@angular/core", "@angular/forms", "@angular/router", "./type.s
                     };
                 }
                 TypeFormComponent.prototype.ngOnInit = function () {
+                    if (this.TypeViewMode == 'new')
+                        this.ActionTitle = 'Add new property type';
+                    this.ActionTitle = 'Edit property type';
                     this._buildForm();
-                    if (this.id) {
-                        this.ActionTitle = 'Edit property type list';
-                        this.showPropType();
-                    }
+                    console.log(this.TypeViewMode);
                 };
                 TypeFormComponent.prototype._buildForm = function () {
                     var _this = this;
@@ -116,7 +110,7 @@ System.register(["@angular/core", "@angular/forms", "@angular/router", "./type.s
                     this.onValueChanged(); // (re)set validation messages now
                 };
                 TypeFormComponent.prototype.onSubmit = function () {
-                    if (!this.id) {
+                    if (this.TypeViewMode == 'new') {
                         this.newPropType();
                     }
                     else {
@@ -129,28 +123,30 @@ System.register(["@angular/core", "@angular/forms", "@angular/router", "./type.s
                     if (!this.PropertyTypeForm) {
                         return;
                     }
-                    this._Service.postPropType(this.PropertyTypeForm.value)
+                    this.TypeService.postPropType(this.PropertyTypeForm.value)
                         .subscribe(function (types) { return _this.types = types; }, function (error) { return _this.errorMessage = error; }, function () {
-                        _this.successMessage = 'Property type created successfuly';
-                        _this.router.navigate(['../larangular/dashboard/property-types']);
+                        _this.NoficationMsg.emit('Property type created successfuly');
+                        _this.viewChanged.emit('list');
                     });
                 };
                 //update property type
                 TypeFormComponent.prototype.putPropType = function () {
                     var _this = this;
-                    this._Service.putPropType(this.id, this.PropertyTypeForm.value)
+                    this.TypeService.putPropType(this.IDPROPTYP, this.PropertyTypeForm.value)
                         .subscribe(function (types) { return _this.types = types; }, function (error) { return _this.errorMessage = error; }, function () {
-                        _this.newPropTypes.emit(_this.types);
-                        _this.successMessage = 'Property type updated successfuly';
-                        _this.router.navigate(['../larangular/dashboard/property-types']);
+                        _this.NoficationMsg.emit('Property type updated successfuly');
+                        _this.viewChanged.emit('list');
                     });
                 };
                 //show property type
-                TypeFormComponent.prototype.showPropType = function () {
-                    var _this = this;
-                    this._Service.getPropType(this.id)
-                        .subscribe(function (types) { return _this.types = types; }, function (error) { return _this.errorMessage = error; });
-                };
+                // showPropType()
+                // {
+                //     this._Service.getPropType(this.id)
+                //         .subscribe(
+                //             types => this.types = types,
+                //             error =>  this.errorMessage = <any>error  
+                //         );
+                // }
                 TypeFormComponent.prototype.onValueChanged = function (data) {
                     if (!this.PropertyTypeForm) {
                         return;
@@ -168,25 +164,20 @@ System.register(["@angular/core", "@angular/forms", "@angular/router", "./type.s
                         }
                     }
                 };
+                TypeFormComponent.prototype.ChangeView = function (event) {
+                    this.viewChanged.emit(event);
+                };
                 return TypeFormComponent;
             }());
-            __decorate([
-                core_1.Input(),
-                __metadata("design:type", Object)
-            ], TypeFormComponent.prototype, "types", void 0);
-            __decorate([
-                core_1.Output(),
-                __metadata("design:type", Object)
-            ], TypeFormComponent.prototype, "newPropTypes", void 0);
             TypeFormComponent = __decorate([
                 core_1.Component({
                     selector: 'property-type-form',
                     templateUrl: './larangular/resources/assets/typescript/types/type-form.component.html',
-                    styles: ["\n        input[type=text].ng-valid,\n        select.ng-valid,\n        input[type=number].ng-valid,\n        textarea.ng-valid{\n            border-width: 2px;\n            background-color: #FAFFBD;\n        }\n\n        input[type=text],input[type=number],select{\n            height: 45px;\n            font-size: 110%;\n        }\n        textarea{\n            min-height: 150px!important;\n            font-size: 110%;\n            max-width: 100% !important;\n        }\n        label\n        {\n            color: #898;\n            font-size: 120%\n        }\n        .error\n        {\n            color: #a94442;\n            font-size: 105%;\n        }\n        input[type=submit]{\n            color: #fff;\n        }\n        .has-error{    border-color: #a94442;}\n    "]
+                    styles: ["\n        input[type=text].ng-valid,\n        select.ng-valid,\n        input[type=number].ng-valid,\n        textarea.ng-valid{\n            border-width: 2px;\n            background-color: #FAFFBD;\n        }\n\n        input[type=text],input[type=number],select{\n            height: 45px;\n            font-size: 110%;\n        }\n        textarea{\n            min-height: 150px!important;\n            font-size: 110%;\n            max-width: 100% !important;\n        }\n        label\n        {\n            color: #898;\n            font-size: 120%\n        }\n        .error\n        {\n            color: #a94442;\n            font-size: 105%;\n        }\n        input[type=submit]{\n            color: #fff;\n        }\n        .has-error{border-color: #a94442;}\n        .btn{margin-top:15px; margin-bottom:15px;}\n    "],
+                    inputs: ['TypeViewMode', 'IDPROPTYP', 'types'],
+                    outputs: ['viewChanged', 'NoficationMsg']
                 }),
-                __metadata("design:paramtypes", [router_1.Router,
-                    router_1.ActivatedRoute,
-                    forms_1.FormBuilder,
+                __metadata("design:paramtypes", [forms_1.FormBuilder,
                     type_service_1.TypeService])
             ], TypeFormComponent);
             exports_1("TypeFormComponent", TypeFormComponent);

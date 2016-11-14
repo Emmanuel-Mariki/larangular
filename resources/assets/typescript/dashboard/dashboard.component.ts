@@ -21,6 +21,9 @@ import { Component, OnInit,EventEmitter } from '@angular/core';
                     </a>
                 </li>
                 <li role="aresentation" class="dash-link">
+                    <a (click)="viewMode='subscription'">Subscription</a>
+                </li>
+                <li role="aresentation" class="dash-link">
                     <a (click)="viewMode='contacts'">Contacts</a>
                 </li>
                 <li role="aresentation" class="dash-link">
@@ -29,7 +32,7 @@ import { Component, OnInit,EventEmitter } from '@angular/core';
                 <li role="aresentation" class="dash-link" 
                     [class.dash-active]="viewMode == 'admin'">
                     <a (click)="viewMode='admin'">
-                        Site Administration
+                        Admin
                     </a>
                 </li>
             </ul>

@@ -75,4 +75,12 @@ export class TypeService {
 
   }
 
+  destroyPropType(id):Observable <PropertyTypes[]>
+  {
+    let options = new RequestOptions({ headers: this.headers });
+    return this.http.delete(this.TypeUrl+'/'+id,options)
+                    .map(this.ExctractData)
+                    .catch(this.ThrowError);
+  }
+
 }
