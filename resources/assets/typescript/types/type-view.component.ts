@@ -36,7 +36,7 @@ import { PropertyTypes } from './type';
                                 *ngIf="formFields.url =='url'"
                                 aria-hidden="true">
                             </i>
-                            <button type="submit" class="btn"
+                            <button type="submit" class="btn save"
                                 *ngIf="formFields.url ==''" 
                                 (click)="setButtonClicked('url','url'); 
                                 onSubmit({url:type.url})">
@@ -69,7 +69,7 @@ import { PropertyTypes } from './type';
                                 *ngIf="formFields.title =='title'"
                                 aria-hidden="true">
                             </i>
-                            <button type="submit" class="btn"
+                            <button type="submit" class="btn save"
                                 *ngIf="formFields.title ==''"
                                 (click)="setButtonClicked('title','title'); 
                                 onSubmit({title:type.title})">
@@ -102,7 +102,7 @@ import { PropertyTypes } from './type';
                                 *ngIf="formFields.name =='name'"
                                 aria-hidden="true">
                             </i>
-                            <button type="submit" class="btn"
+                            <button type="submit" class="btn save"
                                 *ngIf="formFields.name ==''"
                                 (click)="setButtonClicked('name','name'); 
                                 onSubmit({name:type.name})">
@@ -124,37 +124,6 @@ import { PropertyTypes } from './type';
                 </div>
                 <div class="col-md-12">
                     <div class="row">
-                        <div class="col-md-3">Active:</div>
-                        <div class="col-md-8" [hidden]="visible">
-                            <span *ngIf="type.active == '1'"> Yes</span>
-                            <span *ngIf="type.active == '0'"> No</span>
-                        </div>
-                        <div class="col-md-1">
-                            <i *ngIf="type.active == '1'" 
-                                style="cursor:pointer"
-                                (click)="Deactivate(type.IDPROPTYP)"
-                                class="fa fa-check" aria-hidden="true">
-                            </i>
-                            <i *ngIf="type.active == '0'" 
-                                style="cursor:pointer"
-                                (click)="Activate(type.IDPROPTYP)"
-                                class="fa fa-remove" aria-hidden="true">
-                            </i>
-                        </div>
-                        <div class="form-group col-md-8" [hidden]="!visible"
-                            [ngClass]="{'has-error':formErrors.active, 
-                            'has-success':PropertyTypeForm.controls['active'].valid}">
-                            <input type="number" formControlName="active" 
-                            [(ngModel)] ="type.active"
-                            class="form-control disabled" id="active"/>
-                            <span *ngIf="formErrors.active" class="help-block error">
-                                {{ formErrors.active }}
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="row">
                         <div class="col-md-3">Priority:</div>
                         <div class="col-md-8" *ngIf="formFields.priority == 'priority'">
                             {{type.priority}} 
@@ -165,7 +134,7 @@ import { PropertyTypes } from './type';
                                 *ngIf="formFields.priority =='priority'"
                                 aria-hidden="true">
                             </i>
-                            <button type="submit" class="btn"
+                            <button type="submit" class="btn save"
                                 *ngIf="formFields.priority ==''"
                                 (click)="setButtonClicked('priority','priority'); 
                                 onSubmit({priority:type.priority})">
@@ -187,22 +156,6 @@ import { PropertyTypes } from './type';
                 </div>
                 <div class="col-md-12">
                     <div class="row">
-                        <div class="col-md-3">Created:</div>
-                        <div class="col-md-9">
-                            {{type.created_at | date}}
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="row">
-                        <div class="col-md-3">Updated:</div>
-                        <div class="col-md-9">
-                            {{type.updated_at | date}}
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="row">
                         <div class="col-md-3">Keywords:</div>
                         <div class="col-md-8" *ngIf="formFields.keywords == 'keywords'">
                             {{type.keywords}} 
@@ -213,7 +166,7 @@ import { PropertyTypes } from './type';
                                 *ngIf="formFields.keywords =='keywords'"
                                 aria-hidden="true">
                             </i>
-                            <button type="submit" class="btn"
+                            <button type="submit" class="btn save"
                                 *ngIf="formFields.keywords ==''"
                                 (click)="setButtonClicked('keywords','keywords'); 
                                 onSubmit({keywords:type.keywords})">
@@ -246,7 +199,7 @@ import { PropertyTypes } from './type';
                                 *ngIf="formFields.descriptions =='descriptions'"
                                 aria-hidden="true">
                             </i>
-                            <button type="submit" class="btn"
+                            <button type="submit" class="btn save"
                                 *ngIf="formFields.descriptions ==''"
                                 (click)="setButtonClicked('descriptions','descriptions'); 
                                 onSubmit({descriptions:type.descriptions})">
@@ -263,6 +216,43 @@ import { PropertyTypes } from './type';
                             <span *ngIf="formErrors.descriptions" class="help-block error">
                                 {{ formErrors.descriptions }}
                             </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-3">Created:</div>
+                        <div class="col-md-9">
+                            {{type.created_at | date}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-3">Updated:</div>
+                        <div class="col-md-9">
+                            {{type.updated_at | date}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-3">Active:</div>
+                        <div class="col-md-8" [hidden]="visible">
+                            <span *ngIf="type.active == '1'"> Yes</span>
+                            <span *ngIf="type.active == '0'"> No</span>
+                        </div>
+                        <div class="col-md-1">
+                            <i *ngIf="type.active == '1'" 
+                                style="cursor:pointer"
+                                (click)="Deactivate(type.IDPROPTYP)"
+                                class="fa fa-check" aria-hidden="true">
+                            </i>
+                            <i *ngIf="type.active == '0'" 
+                                style="cursor:pointer"
+                                (click)="Activate(type.IDPROPTYP)"
+                                class="fa fa-remove" aria-hidden="true">
+                            </i>
                         </div>
                     </div>
                 </div>
@@ -315,6 +305,16 @@ import { PropertyTypes } from './type';
             padding-top:10px;
             padding-bottom:10px;
         }
+        .col-md-3
+        {
+            font-weight: 800;
+            color: #999;
+        }
+        .save
+        {
+            position:relative;
+            top:-7px;
+        }
     `],
     inputs:['type','IDPROPTYP'],
     outputs:['viewChanged']
@@ -331,15 +331,11 @@ export class TypeViewComponent implements OnInit{
         private TypeService: TypeService
     ) {}
 
-    // private Active:boolean = true;
-
     private errorMessage: string;
 
     private successMessage:string;
 
     viewChanged = new EventEmitter<string>();
-
-    // @Input() visible: boolean = false;
 
     private PropertyTypeForm:FormGroup;
     
@@ -349,34 +345,23 @@ export class TypeViewComponent implements OnInit{
     ngOnInit()
     { 
         this._buildForm(); 
-        //this.showPropType();
     }
 
     ChangeView(event)
     {
         this.viewChanged.emit(event);
-        console.log(event);
     }
 
     onSubmit(body)
     {
         this.TypeService.putPropType(this.IDPROPTYP,body)
             .subscribe(
-                PropType => this.showPropType(),
+                type => this.type,
                 error =>  this.errorMessage = <any>error,  
                 ()=>{
                 }
             );
     }
-
-    // private showPropType()
-    // {
-    //     this.TypeService.getPropType(id)
-    //         .subscribe(
-    //             PropType => this.PropType = PropType,
-    //             error =>  this.errorMessage = <any>error  
-    //         );
-    // }
     private _buildForm(): void 
     {
         this.PropertyTypeForm = this._fomBuilder.group({
@@ -495,19 +480,17 @@ export class TypeViewComponent implements OnInit{
         },
     }
 
-    // @Output() open: EventEmitter<any> = new EventEmitter();
-    // @Output() close: EventEmitter<any> = new EventEmitter();
-
     Deactivate(id)
     {
         let body = {'active':'0'};
 
-        this.TypeService.putPropType(id,body)
+        this.TypeService.putPropType(this.IDPROPTYP,body)
             .subscribe(
-                PropTypes =>this.showPropType(),
+                type =>this.type,
                 error =>  this.errorMessage = <any>error,  
                 ()=>{
                     this.successMessage = 'Property type deactivated successfuly';
+                    console.log(this.type.active)
                 }
             );
     }
@@ -516,12 +499,13 @@ export class TypeViewComponent implements OnInit{
     {
         let body = {'active':'1'};
 
-        this.TypeService.putPropType(id,body)
+        this.TypeService.putPropType(this.IDPROPTYP,body)
             .subscribe(
-                PropTypes =>this.showPropType(),
+                type =>this.type,
                 error =>  this.errorMessage = <any>error,  
                 ()=>{
                     this.successMessage = 'Property type activated successfuly';
+                    console.log(this.type.active)
                 }
             );
     }
